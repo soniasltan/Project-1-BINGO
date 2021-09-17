@@ -1,0 +1,22 @@
+table {
+    table-layout: fixed;
+    /* width: 40%; */
+    border-collapse: collapse;
+    border: 3px solid black;
+  }
+
+  tr, th, td {
+    border: 3px solid black;
+    empty-cells: show;
+  }
+  thead, tr, td {
+      height: 65px;
+      width: 65px;
+  }
+
+  thead {
+      background-color: maroon;
+      color: white;
+      font-size: 20px;
+
+  }
