@@ -1,19 +1,22 @@
-const makeTableRow = (num) => {
+const makeTableRow = (numB, numI, numN, numG, numO) => {
   const $tr = $("<tr>");
-  const $tdB = $("<td>").addClass("B").text(num);
-  const $tdI = $("<td>").addClass("I").text(num);
-  const $tdN = $("<td>").addClass("N").text(num);
-  const $tdG = $("<td>").addClass("G").text(num);
-  const $tdO = $("<td>").addClass("O").text(num);
+  const $tdB = $("<td>").addClass("B").text(numB);
+  const $tdI = $("<td>").addClass("I").text(numI);
+  const $tdN = $("<td>").addClass("N").text(numN);
+  const $tdG = $("<td>").addClass("G").text(numG);
+  const $tdO = $("<td>").addClass("O").text(numO);
   $tr.append($tdB, $tdI, $tdN, $tdG, $tdO);
   return $tr;
 };
 
 const makeTable = (tableNums, $parent) => {
   for (let i = 0; i < tableNums.length; i++) {
-    const num = tableNums[i].row[i];
-
-    $tr = makeTableRow(num);
+    const numB = tableNums[i].row[0];
+    const numI = tableNums[i].row[1];
+    const numN = tableNums[i].row[2];
+    const numG = tableNums[i].row[3];
+    const numO = tableNums[i].row[4];
+    $tr = makeTableRow(numB, numI, numN, numG, numO);
     $parent.append($tr);
   }
 };
@@ -67,7 +70,7 @@ const chooseRandomNums = () => {
 };
 
 const main = () => {
-  chooseRandomNums();
+  chooseRandomNums(); // creates ramdom numbers for scorecard
 };
 
 $(main);
