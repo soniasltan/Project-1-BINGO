@@ -1,27 +1,56 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 table {
-    table-layout: fixed;
-    /* width: 40%; */
-    border-collapse: collapse;
-    border: 3px solid black;
-  }
+  table-layout: fixed;
+  /* width: 40%; */
+  border-collapse: collapse;
+  border: 3px solid black;
+  margin: 0 auto;
+}
 
-  tr, th, td {
-    border: 3px solid black;
-    empty-cells: show;
-  }
-  thead, tr, td {
-      height: 65px;
-      width: 65px;
-  }
+tr,
+th,
+td {
+  border: 3px solid black;
+  empty-cells: show;
+}
+thead,
+tr,
+td {
+  height: 50px;
+  width: 50px;
+}
 
-  thead {
-      background-color: maroon;
-      color: white;
-      font-size: 20px;
+thead {
+  background-color: maroon;
+  color: white;
+  font-size: 20px;
+}
 
-  }
+td {
+  text-align: center;
+  font-size: 25px;
+}
 
-  td {
-      text-align: center;
-      font-size: 25px;
-  }
+#cards {
+  display: flex;
+}
+
+caption {
+  font-size: 22px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.numberCalled {
+  border-radius: 50%;
+  background-color: turquoise;
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  
+}

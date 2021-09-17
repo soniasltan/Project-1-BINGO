@@ -23,7 +23,7 @@ const makeTable = (tableNums, $parent) => {
   }
 };
 
-const chooseRandomNums = () => {
+const chooseRandomNums = ($parent) => {
   const availNums = [
     { col: "B", nums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
     {
@@ -63,14 +63,17 @@ const chooseRandomNums = () => {
   for (let i = 0; i < tableNums.length; i++) {
     tableNums[i].row= fillRow();
   }
-  tableNums[2].row[2] = "FREE";
-  const $tbody = $("tbody");
-  makeTable(tableNums, $tbody);
+  tableNums[2].row[2] = "FREE"; // show 'FREE' in center square
+  makeTable(tableNums, $parent);
 };
 /////////////////////////////////
 
 const main = () => {
-  chooseRandomNums(); // creates ramdom numbers for bingo card
+    const $player1card = $(".player1");
+    const $player2card = $(".player2")
+  chooseRandomNums($player1card); // creates ramdom numbers for bingo card
+  chooseRandomNums($player2card);
+  $(".N:contains('FREE')").css("font-size", "16px");
 };
 
 $(main);
