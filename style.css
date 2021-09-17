@@ -46,11 +46,15 @@ h1 {
   text-align: center;
 }
 
-.numberCalled {
+#numberCalled {
   border-radius: 50%;
   background-color: turquoise;
   height: 100px;
   width: 100px;
   margin: auto;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+
