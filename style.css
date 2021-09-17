@@ -20,3 +20,8 @@ table {
       font-size: 20px;
 
   }
+
+  td {
+      text-align: center;
+      font-size: 25px;
+  }

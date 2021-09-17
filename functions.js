@@ -1,3 +1,5 @@
+/////////////////
+// for bingo cards
 const makeTableRow = (numB, numI, numN, numG, numO) => {
   const $tr = $("<tr>");
   const $tdB = $("<td>").addClass("B").text(numB);
@@ -61,16 +63,14 @@ const chooseRandomNums = () => {
   for (let i = 0; i < tableNums.length; i++) {
     tableNums[i].row= fillRow();
   }
-
-  console.log(tableNums);
-  console.log(tableNums[0].row[0]);
-  console.log(availNums);
+  tableNums[2].row[2] = "FREE";
   const $tbody = $("tbody");
   makeTable(tableNums, $tbody);
 };
+/////////////////////////////////
 
 const main = () => {
-  chooseRandomNums(); // creates ramdom numbers for scorecard
+  chooseRandomNums(); // creates ramdom numbers for bingo card
 };
 
 $(main);
