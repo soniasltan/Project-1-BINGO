@@ -23,6 +23,10 @@ td {
   width: 50px;
 }
 
+th {
+    font-size: 36px;
+}
+
 thead {
   background-color: maroon;
   color: white;
