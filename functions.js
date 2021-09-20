@@ -1,3 +1,4 @@
+
 /////////////////
 // for bingo cards
 const availCardNums = [
@@ -22,36 +23,36 @@ const availCardNums = [
 
 const makeTableRow = (numB, numI, numN, numG, numO) => {
   const $tr = $("<tr>");
-  const $tdB = $("<td>").addClass("B").text(numB);
-  const $tdI = $("<td>").addClass("I").text(numI);
-  const $tdN = $("<td>").addClass("N").text(numN);
-  const $tdG = $("<td>").addClass("G").text(numG);
-  const $tdO = $("<td>").addClass("O").text(numO);
+  const $tdB = $("<td>").addClass("B").text(numB).attr("id",numB);
+  const $tdI = $("<td>").addClass("I").text(numI).attr("id",numI);
+  const $tdN = $("<td>").addClass("N").text(numN).attr("id",numN);
+  const $tdG = $("<td>").addClass("G").text(numG).attr("id",numG);
+  const $tdO = $("<td>").addClass("O").text(numO).attr("id",numO);
   $tr.append($tdB, $tdI, $tdN, $tdG, $tdO);
   return $tr;
 };
 
 const makeTable = (tableNums, $parent) => {
   for (let i = 0; i < tableNums.length; i++) {
-    const numB = tableNums[i].row[0];
-    const numI = tableNums[i].row[1];
-    const numN = tableNums[i].row[2];
-    const numG = tableNums[i].row[3];
-    const numO = tableNums[i].row[4];
+    const numB = tableNums[i].num[0];
+    const numI = tableNums[i].num[1];
+    const numN = tableNums[i].num[2];
+    const numG = tableNums[i].num[3];
+    const numO = tableNums[i].num[4];
     let rowNum = (i + 1).toString();
     $tr = makeTableRow(numB, numI, numN, numG, numO).addClass(rowNum);
     $parent.append($tr);
   }
 };
 
+const tableNums = [
+  { row: "1", num: null }, // B1, I1, N1, G1, O1
+  { row: "2", num: null },
+  { row: "3", num: null },
+  { row: "4", num: null },
+  { row: "5", num: null },
+];
 const chooseRandomNums = ($parent) => {
-  const tableNums = [
-    { col: "B", row: null },
-    { col: "I", row: null },
-    { col: "N", row: null },
-    { col: "G", row: null },
-    { col: "O", row: null },
-  ];
   const fillRow = () => {
     let arr = [];
     for (let i = 0; i < availCardNums.length; i++) {
@@ -62,13 +63,18 @@ const chooseRandomNums = ($parent) => {
       availCardNums[i].nums.splice(randIndex, 1);
     }
     return arr;
-    // }
   };
   for (let i = 0; i < tableNums.length; i++) {
-    tableNums[i].row = fillRow();
+    tableNums[i].num = fillRow();
   }
-  tableNums[2].row[2] = "FREE"; // show 'FREE' in center square
   makeTable(tableNums, $parent);
+  for (let i=0; i<tableNums[0].num.length; i++) { // adds removed numbers back into availCardNums array
+      availCardNums[i].nums.push(tableNums[0].num[i]);
+      availCardNums[i].nums.push(tableNums[1].num[i]);
+      availCardNums[i].nums.push(tableNums[2].num[i]);
+      availCardNums[i].nums.push(tableNums[3].num[i]);
+      availCardNums[i].nums.push(tableNums[4].num[i]);
+    }
 };
 /////////////////////////////////
 // to call bingo numbers
@@ -82,20 +88,11 @@ const callNumbers = () => {
   const bingoIndex = Math.floor(Math.random() * availBingoNums.length);
   $h1.text(availBingoNums[bingoIndex]);
   availBingoNums.splice(bingoIndex, 1);
-};
 
+  const currentNumber = $h1.text(); 
+  $("#"+currentNumber).addClass("hit"); //if a td on the bingo card matches the current number being called, adds "hit" class to the td and marks it with a pink circle
 /////////////////////////////////
-// to register a hit if number called is present on bingo card
-// const addHit = () => {
-//     const currentNum = $(".currentNumber").text();
-//     console.log(currentNum);
-//     // const $td = $("td");
-//     if ($("td").text() === (currentNum.toString())) {
-//         console.log("hit");
-//         // $currentTd = $("td").filter( () => {return $(this).text()===currentNum});
-//         //     $currentTd.addClass("hit");
-//     }
-// }
+}
 
 /////////////////////////////////
 
@@ -103,23 +100,25 @@ const main = () => {
   const $player1card = $(".player1");
   const $player2card = $(".player2");
   chooseRandomNums($player1card); // creates ramdom numbers for bingo card
+  $(".player1 tr.3 td.N").text("FREE");
   chooseRandomNums($player2card);
+  $(".player2 tr.3 td.N").text("FREE");
   $(".N:contains('FREE')")
     .addClass("hit")
     .attr("id", "N3")
     .css("font-size", "16px");
-  const $B1 = $("tr.1 td.B").attr("id", "B1"); // create IDs for squares needed for diagonal wins
-  const $I2 = $("tr.2 td.I").attr("id", "I2");
-  const $G4 = $("tr.4 td.G").attr("id", "G4");
-  const $O5 = $("tr.5 td.O").attr("id", "O5");
-  const $O1 = $("tr.1 td.O").attr("id", "O1");
-  const $G2 = $("tr.2 td.G").attr("id", "G2");
-  const $I4 = $("tr.4 td.I").attr("id", "I4");
-  const $B5 = $("tr.5 td.B").attr("id", "B5");
+  const $B1 = $("tr.1 td.B").addClass("diagonalWinL"); // create classes for squares needed for diagonal wins
+  const $I2 = $("tr.2 td.I").addClass("diagonalWinL"); 
+  const $G4 = $("tr.4 td.G").addClass("diagonalWinL"); 
+  const $O5 = $("tr.5 td.O").addClass("diagonalWinL"); 
+  const $O1 = $("tr.1 td.O").addClass("diagonalWinR"); 
+  const $G2 = $("tr.2 td.G").addClass("diagonalWinR"); 
+  const $I4 = $("tr.4 td.I").addClass("diagonalWinR"); 
+  const $B5 = $("tr.5 td.B").addClass("diagonalWinR"); 
   const $numberCalled = $("#numberCalled");
   $numberCalled.on("click", callNumbers); // show new bingo number on click
 
-  // addHit();
+
 };
 
 $(main);
