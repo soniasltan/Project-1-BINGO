@@ -38,7 +38,8 @@ const makeTable = (tableNums, $parent) => {
     const numN = tableNums[i].row[2];
     const numG = tableNums[i].row[3];
     const numO = tableNums[i].row[4];
-    $tr = makeTableRow(numB, numI, numN, numG, numO);
+    let rowNum = (i+1).toString();
+    $tr = makeTableRow(numB, numI, numN, numG, numO).addClass(rowNum);
     $parent.append($tr);
   }
 };
@@ -84,14 +85,36 @@ const callNumbers = () => {
 }
 
 /////////////////////////////////
+// to register a hit if number called is present on bingo card
+
+// const addHit = () => {
+//     const currentNum = $("#numberCalled h1").text;
+//     const $td = $("td");
+//     if ($td.text === currentNum) {
+//         $("td:contains(currentNum)").addClass("hit");
+//     }
+// }
+
+
+/////////////////////////////////
 
 const main = () => {
   const $player1card = $(".player1");
   const $player2card = $(".player2");
   chooseRandomNums($player1card); // creates ramdom numbers for bingo card
   chooseRandomNums($player2card);
-  $(".N:contains('FREE')").css("font-size", "16px");
+  $(".N:contains('FREE')").addClass("hit").attr("id","N3").css("font-size", "16px");
+  const $B1 = $("tr.1 td.B").attr("id","B1"); // create IDs for squares needed for diagonal wins
+  const $I2 = $("tr.2 td.I").attr("id","I2");
+  const $G4 = $("tr.4 td.G").attr("id","G4");
+  const $O5 = $("tr.5 td.O").attr("id","O5");
+  const $O1 = $("tr.1 td.O").attr("id","O1");
+  const $G2 = $("tr.2 td.G").attr("id","G2");
+  const $I4 = $("tr.4 td.I").attr("id","I4");
+  const $B5 = $("tr.5 td.B").attr("id","B5");
+  
 callNumbers();
+addHit();
 };
 
 $(main);

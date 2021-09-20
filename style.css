@@ -57,4 +57,13 @@ h1 {
   align-items: center;
 }
 
+.hit {
+    border-radius: 50%;
+    background-color: magenta;
+    height:30px;
+    width: 30px;
+    opacity: 50%;
+    margin: auto;
+}
+
 
