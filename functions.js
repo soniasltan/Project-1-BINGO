@@ -3,7 +3,10 @@
 const startGame = () => {
     $("#startScreen").toggle();
     $('#gameScreen').toggle();
-    
+    const player1name = $("#player1name").val();
+    const player2name = $("#player2name").val();
+    $(".player1 caption").text(player1name);
+    $(".player2 caption").text(player2name);
     const $player1card = $(".player1");
     const $player2card = $(".player2");
     chooseRandomNums($player1card); // creates ramdom numbers for bingo card
