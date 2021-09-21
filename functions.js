@@ -110,16 +110,37 @@ const callNumbers = () => {
 /////////////////////////////////
 // to evaluate win
 
+const declareWin = (square1, square2, square3, square4, square5) => {
+  console.log("winner winner chicken dinner");
+  square1.removeClass("hit").addClass("win");
+  square2.removeClass("hit").addClass("win");
+  square3.removeClass("hit").addClass("win");
+  square4.removeClass("hit").addClass("win");
+  square5.removeClass("hit").addClass("win");
+  $(".numberCalled").text("WIN!").addClass("winMessage");
+};
+
 const checkWin = () => {
+//   const announceWin = (text) => {
+//     alert(text);
+//   };
   if (
+    //horizontal wins
     $(".player1 .row1 .B").hasClass("hit") &&
     $(".player1 .row1 .I").hasClass("hit") &&
     $(".player1 .row1 .N").hasClass("hit") &&
     $(".player1 .row1 .G").hasClass("hit") &&
     $(".player1 .row1 .O").hasClass("hit") === true
   ) {
-    //horizontal wins
     console.log("Player 1 wins with bingo on row 1!");
+    declareWin(
+      $(".player1 .row1 .B"),
+      $(".player1 .row1 .I"),
+      $(".player1 .row1 .N"),
+      $(".player1 .row1 .G"),
+      $(".player1 .row1 .O")
+    );
+    // announceWin("Player 1 wins with bingo on row 1!").delay(1000);
   } else if (
     $(".player2 .row1 .B").hasClass("hit") &&
     $(".player2 .row1 .I").hasClass("hit") &&
@@ -128,6 +149,14 @@ const checkWin = () => {
     $(".player2 .row1 .O").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on row 1!");
+    declareWin(
+      $(".player2 .row1 .B"),
+      $(".player2 .row1 .I"),
+      $(".player2 .row1 .N"),
+      $(".player2 .row1 .G"),
+      $(".player2 .row1 .O")
+    );
+    // announceWin("Player 2 wins with bingo on row 1!").delay(1000);
   } else if (
     $(".player1 .row2 .B").hasClass("hit") &&
     $(".player1 .row2 .I").hasClass("hit") &&
@@ -136,6 +165,14 @@ const checkWin = () => {
     $(".player1 .row2 .O").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on row 2!");
+    declareWin(
+      $(".player1 .row2 .B"),
+      $(".player1 .row2 .I"),
+      $(".player1 .row2 .N"),
+      $(".player1 .row2 .G"),
+      $(".player1 .row2 .O")
+    );
+    // announceWin("Player 1 wins with bingo on row 2!").delay(1000);
   } else if (
     $(".player2 .row2 .B").hasClass("hit") &&
     $(".player2 .row2 .I").hasClass("hit") &&
@@ -144,6 +181,14 @@ const checkWin = () => {
     $(".player2 .row2 .O").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on row 2!");
+    declareWin(
+      $(".player2 .row2 .B"),
+      $(".player2 .row2 .I"),
+      $(".player2 .row2 .N"),
+      $(".player2 .row2 .G"),
+      $(".player2 .row2 .O")
+    );
+    // announceWin("Player 2 wins with bingo on row 2!").delay(1000);
   } else if (
     $(".player1 .row3 .B").hasClass("hit") &&
     $(".player1 .row3 .I").hasClass("hit") &&
@@ -152,6 +197,14 @@ const checkWin = () => {
     $(".player1 .row3 .O").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on row 3!");
+    declareWin(
+      $(".player1 .row3 .B"),
+      $(".player1 .row3 .I"),
+      $(".player1 .row3 .N"),
+      $(".player1 .row3 .G"),
+      $(".player1 .row3 .O")
+    );
+    // announceWin("Player 1 wins with bingo on row 3!").delay(1000);
   } else if (
     $(".player2 .row3 .B").hasClass("hit") &&
     $(".player2 .row3 .I").hasClass("hit") &&
@@ -160,6 +213,14 @@ const checkWin = () => {
     $(".player2 .row3 .O").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on row 3!");
+    declareWin(
+      $(".player2 .row3 .B"),
+      $(".player2 .row3 .I"),
+      $(".player2 .row3 .N"),
+      $(".player2 .row3 .G"),
+      $(".player2 .row3 .O")
+    );
+    // announceWin("Player 2 wins with bingo on row 3!").delay(1000);
   } else if (
     $(".player1 .row4 .B").hasClass("hit") &&
     $(".player1 .row4 .I").hasClass("hit") &&
@@ -168,6 +229,14 @@ const checkWin = () => {
     $(".player1 .row4 .O").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on row 4!");
+    declareWin(
+      $(".player1 .row4 .B"),
+      $(".player1 .row4 .I"),
+      $(".player1 .row4 .N"),
+      $(".player1 .row4 .G"),
+      $(".player1 .row4 .O")
+    );
+    // announceWin("Player 1 wins with bingo on row 4!").delay(1000);
   } else if (
     $(".player2 .row4 .B").hasClass("hit") &&
     $(".player2 .row4 .I").hasClass("hit") &&
@@ -176,6 +245,14 @@ const checkWin = () => {
     $(".player2 .row4 .O").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on row 4!");
+    declareWin(
+      $(".player2 .row4 .B"),
+      $(".player2 .row4 .I"),
+      $(".player2 .row4 .N"),
+      $(".player2 .row4 .G"),
+      $(".player2 .row4 .O")
+    );
+    // announceWin("Player 2 wins with bingo on row 4!").delay(1000);
   } else if (
     $(".player1 .row5 .B").hasClass("hit") &&
     $(".player1 .row5 .I").hasClass("hit") &&
@@ -184,6 +261,14 @@ const checkWin = () => {
     $(".player1 .row5 .O").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on row 5!");
+    declareWin(
+      $(".player1 .row5 .B"),
+      $(".player1 .row5 .I"),
+      $(".player1 .row5 .N"),
+      $(".player1 .row5 .G"),
+      $(".player1 .row5 .O")
+    );
+    // announceWin("Player 1 wins with bingo on row 5!").delay(1000);
   } else if (
     $(".player2 .row5 .B").hasClass("hit") &&
     $(".player2 .row5 .I").hasClass("hit") &&
@@ -192,6 +277,14 @@ const checkWin = () => {
     $(".player2 .row5 .O").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on row 5!");
+    declareWin(
+      $(".player2 .row5 .B"),
+      $(".player2 .row5 .I"),
+      $(".player2 .row5 .N"),
+      $(".player2 .row5 .G"),
+      $(".player2 .row5 .O")
+    );
+    // announceWin("Player 2 wins with bingo on row 5!").delay(1000);
   } else if (
     $(".player1 .row1 .B").hasClass("hit") &&
     $(".player1 .row2 .B").hasClass("hit") &&
@@ -201,6 +294,14 @@ const checkWin = () => {
   ) {
     // vertical wins
     console.log("Player 1 wins with bingo on column B!");
+    declareWin(
+      $(".player1 .row1 .B"),
+      $(".player1 .row2 .B"),
+      $(".player1 .row3 .B"),
+      $(".player1 .row4 .B"),
+      $(".player1 .row5 .B")
+    );
+    // announceWin("Player 1 wins with bingo on column B!").delay(1000);
   } else if (
     $(".player2 .row1 .B").hasClass("hit") &&
     $(".player2 .row2 .B").hasClass("hit") &&
@@ -209,6 +310,14 @@ const checkWin = () => {
     $(".player2 .row5 .B").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on column B!");
+    declareWin(
+      $(".player2 .row1 .B"),
+      $(".player2 .row2 .B"),
+      $(".player2 .row3 .B"),
+      $(".player2 .row4 .B"),
+      $(".player2 .row5 .B")
+    );
+    // announceWin("Player 2 wins with bingo on column B!").delay(1000);
   } else if (
     $(".player1 .row1 .I").hasClass("hit") &&
     $(".player1 .row2 .I").hasClass("hit") &&
@@ -217,6 +326,14 @@ const checkWin = () => {
     $(".player1 .row5 .I").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on column I!");
+    declareWin(
+      $(".player1 .row1 .I"),
+      $(".player1 .row2 .I"),
+      $(".player1 .row3 .I"),
+      $(".player1 .row4 .I"),
+      $(".player1 .row5 .I")
+    );
+    // announceWin("Player 1 wins with bingo on column I!").delay(1000);
   } else if (
     $(".player2 .row1 .I").hasClass("hit") &&
     $(".player2 .row2 .I").hasClass("hit") &&
@@ -225,6 +342,14 @@ const checkWin = () => {
     $(".player2 .row5 .I").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on column I!");
+    declareWin(
+      $(".player2 .row1 .I"),
+      $(".player2 .row2 .I"),
+      $(".player2 .row3 .I"),
+      $(".player2 .row4 .I"),
+      $(".player2 .row5 .I")
+    );
+    // announceWin("Player 2 wins with bingo on column I!").delay(1000);
   } else if (
     $(".player1 .row1 .N").hasClass("hit") &&
     $(".player1 .row2 .N").hasClass("hit") &&
@@ -233,6 +358,14 @@ const checkWin = () => {
     $(".player1 .row5 .N").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on column N!");
+    declareWin(
+      $(".player1 .row1 .N"),
+      $(".player1 .row2 .N"),
+      $(".player1 .row3 .N"),
+      $(".player1 .row4 .N"),
+      $(".player1 .row5 .N")
+    );
+    // announceWin("Player 1 wins with bingo on column N!").delay(1000);
   } else if (
     $(".player2 .row1 .N").hasClass("hit") &&
     $(".player2 .row2 .N").hasClass("hit") &&
@@ -241,6 +374,14 @@ const checkWin = () => {
     $(".player2 .row5 .N").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on column N!");
+    declareWin(
+      $(".player2 .row1 .N"),
+      $(".player2 .row2 .N"),
+      $(".player2 .row3 .N"),
+      $(".player2 .row4 .N"),
+      $(".player2 .row5 .N")
+    );
+    // announceWin("Player 2 wins with bingo on column N!").delay(1000);
   } else if (
     $(".player1 .row1 .G").hasClass("hit") &&
     $(".player1 .row2 .G").hasClass("hit") &&
@@ -249,6 +390,14 @@ const checkWin = () => {
     $(".player1 .row5 .G").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on column G!");
+    declareWin(
+      $(".player1 .row1 .G"),
+      $(".player1 .row2 .G"),
+      $(".player1 .row3 .G"),
+      $(".player1 .row4 .G"),
+      $(".player1 .row5 .G")
+    );
+    // announceWin("Player 1 wins with bingo on column G!").delay(1000);
   } else if (
     $(".player2 .row1 .G").hasClass("hit") &&
     $(".player2 .row2 .G").hasClass("hit") &&
@@ -257,6 +406,14 @@ const checkWin = () => {
     $(".player2 .row5 .G").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on column G!");
+    declareWin(
+      $(".player2 .row1 .G"),
+      $(".player2 .row2 .G"),
+      $(".player2 .row3 .G"),
+      $(".player2 .row4 .G"),
+      $(".player2 .row5 .G")
+    );
+    // announceWin("Player 2 wins with bingo on column G!").delay(1000);
   } else if (
     $(".player1 .row1 .O").hasClass("hit") &&
     $(".player1 .row2 .O").hasClass("hit") &&
@@ -265,6 +422,14 @@ const checkWin = () => {
     $(".player1 .row5 .O").hasClass("hit") === true
   ) {
     console.log("Player 1 wins with bingo on column O!");
+    declareWin(
+      $(".player1 .row1 .O"),
+      $(".player1 .row2 .O"),
+      $(".player1 .row3 .O"),
+      $(".player1 .row4 .O"),
+      $(".player1 .row5 .O")
+    );
+    // announceWin("Player 1 wins with bingo on column O!").delay(1000);
   } else if (
     $(".player2 .row1 .O").hasClass("hit") &&
     $(".player2 .row2 .O").hasClass("hit") &&
@@ -273,6 +438,14 @@ const checkWin = () => {
     $(".player2 .row5 .O").hasClass("hit") === true
   ) {
     console.log("Player 2 wins with bingo on column O!");
+    declareWin(
+      $(".player2 .row1 .O"),
+      $(".player2 .row2 .O"),
+      $(".player2 .row3 .O"),
+      $(".player2 .row4 .O"),
+      $(".player2 .row5 .O")
+    );
+    // announceWin("Player 2 wins with bingo on column O!").delay(1000);
   } else if (
     $(".player1 .row1 .B").hasClass("hit") &&
     $(".player1 .row2 .I").hasClass("hit") &&
@@ -280,14 +453,38 @@ const checkWin = () => {
     $(".player1 .row5 .O").hasClass("hit") === true
   ) {
     // diagonal win from top left corner
-    console.log("Player 1 wins with bingo diagonally from the top left corner!");
+    console.log(
+      "Player 1 wins with bingo diagonally from the top left corner!"
+    );
+    declareWin(
+      $(".player1 .row1 .B"),
+      $(".player1 .row2 .I"),
+      $(".player1 .row3 .N"),
+      $(".player1 .row4 .G"),
+      $(".player1 .row5 .O")
+    );
+    // announceWin(
+    //   "Player 1 wins with bingo diagonally from the top left corner!"
+    // ).delay(1000);
   } else if (
     $(".player2 .row1 .B").hasClass("hit") &&
     $(".player2 .row2 .I").hasClass("hit") &&
     $(".player2 .row4 .G").hasClass("hit") &&
     $(".player2 .row5 .O").hasClass("hit") === true
   ) {
-    console.log("Player 2 wins with bingo diagonally from the top left corner!");
+    console.log(
+      "Player 2 wins with bingo diagonally from the top left corner!"
+    );
+    declareWin(
+      $(".player2 .row1 .B"),
+      $(".player2 .row2 .I"),
+      $(".player2 .row3 .N"),
+      $(".player2 .row4 .G"),
+      $(".player2 .row5 .O")
+    );
+    // announceWin(
+    //   "Player 2 wins with bingo diagonally from the top left corner!"
+    // ).delay(1000);
   } else if (
     $(".player1 .row1 .O").hasClass("hit") &&
     $(".player1 .row2 .G").hasClass("hit") &&
@@ -295,14 +492,38 @@ const checkWin = () => {
     $(".player1 .row5 .B").hasClass("hit") === true
   ) {
     // diagonal win from top right corner
-    console.log("Player 1 wins with bingo diagonally from the top right corner!");
+    console.log(
+      "Player 1 wins with bingo diagonally from the top right corner!"
+    );
+    declareWin(
+      $(".player1 .row1 .O"),
+      $(".player1 .row2 .G"),
+      $(".player1 .row3 .N"),
+      $(".player1 .row4 .I"),
+      $(".player1 .row5 .B")
+    );
+    // announceWin(
+    //   "Player 1 wins with bingo diagonally from the top right corner!"
+    // ).delay(1000);
   } else if (
     $(".player2 .row1 .O").hasClass("hit") &&
     $(".player2 .row2 .G").hasClass("hit") &&
     $(".player2 .row4 .I").hasClass("hit") &&
     $(".player2 .row5 .B").hasClass("hit") === true
   ) {
-    console.log("Player 2 wins with bingo diagonally from the top right corner!");
+    console.log(
+      "Player 2 wins with bingo diagonally from the top right corner!"
+    );
+    declareWin(
+      $(".player2 .row1 .O"),
+      $(".player2 .row2 .G"),
+      $(".player2 .row3 .N"),
+      $(".player2 .row4 .I"),
+      $(".player2 .row5 .B")
+    );
+    // announceWin(
+    //   "Player 2 wins with bingo diagonally from the top right corner!"
+    // ).delay(1000);
   } else {
     console.log("no wins yet!");
   }
@@ -321,7 +542,7 @@ const main = () => {
     .addClass("hit")
     .attr("id", "N3")
     .css("font-size", "16px");
-  const $numberCalled = $("#numberCalled");
+  const $numberCalled = $(".numberCalled");
   $numberCalled.on("click", callNumbers); // show new bingo number on click
 };
 
