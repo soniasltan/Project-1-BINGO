@@ -1,25 +1,25 @@
 /////////////////
 // to show game screen
 const startGame = () => {
-    $("#startScreen").toggle();
-    $('#gameScreen').toggle();
-    const player1name = $("#player1name").val();
-    const player2name = $("#player2name").val();
-    $(".player1 caption").text(player1name);
-    $(".player2 caption").text(player2name);
-    const $player1card = $(".player1");
-    const $player2card = $(".player2");
-    chooseRandomNums($player1card); // creates ramdom numbers for bingo card
-    $(".player1 tr.row3 td.N").text("FREE");
-    chooseRandomNums($player2card);
-    $(".player2 tr.row3 td.N").text("FREE");
-    $(".N:contains('FREE')")
-      .addClass("hit")
-      .attr("id", "N3")
-      .css("font-size", "16px");
-    const $numberCalled = $(".numberCalled");
-    $numberCalled.on("click", callNumbers); // show new bingo number on click
-}
+  $("#startScreen").toggle();
+  $("#gameScreen").toggle();
+  const player1input = $("#player1name").val();
+  const player2input = $("#player2name").val();
+  $(".player1 caption").text(player1input);
+  $(".player2 caption").text(player2input);
+  const $player1card = $(".player1");
+  const $player2card = $(".player2");
+  chooseRandomNums($player1card); // creates ramdom numbers for bingo card
+  $(".player1 tr.row3 td.N").text("FREE");
+  chooseRandomNums($player2card);
+  $(".player2 tr.row3 td.N").text("FREE");
+  $(".N:contains('FREE')")
+    .addClass("hit")
+    .attr("id", "N3")
+    .css("font-size", "16px");
+  const $numberCalled = $(".numberCalled");
+  $numberCalled.on("click", callNumbers); // show new bingo number on click
+};
 /////////////////
 // for bingo cards
 const availCardNums = [
@@ -132,20 +132,33 @@ const callNumbers = () => {
 /////////////////////////////////
 // to evaluate win
 
-const declareWin = (square1, square2, square3, square4, square5) => {
+const declareWin = (
+  square1,
+  square2,
+  square3,
+  square4,
+  square5,
+  winnerName,
+  message
+) => {
   console.log("winner winner chicken dinner");
   square1.removeClass("hit").addClass("win");
   square2.removeClass("hit").addClass("win");
   square3.removeClass("hit").addClass("win");
   square4.removeClass("hit").addClass("win");
   square5.removeClass("hit").addClass("win");
-  $(".numberCalled").text("WIN!").addClass("winMessage");
+  $(".numberCalled").text("WIN!").addClass("winAlert");
+  const $topDisplay = $(".topDisplay");
+  const $winMessage = $("<h2>").text("" + winnerName + message);
+  $topDisplay.append($winMessage);
 };
 
 const checkWin = () => {
-//   const announceWin = (text) => {
-//     alert(text);
-//   };
+  //   const announceWin = (text) => {
+  //     alert(text);
+  //   };
+  const player1name = $(".player1 caption").text();
+  const player2name = $(".player2 caption").text();
   if (
     //horizontal wins
     $(".player1 .row1 .B").hasClass("hit") &&
@@ -160,7 +173,9 @@ const checkWin = () => {
       $(".player1 .row1 .I"),
       $(".player1 .row1 .N"),
       $(".player1 .row1 .G"),
-      $(".player1 .row1 .O")
+      $(".player1 .row1 .O"),
+      player1name,
+      " wins with bingo on row 1!"
     );
     // announceWin("Player 1 wins with bingo on row 1!").delay(1000);
   } else if (
@@ -176,7 +191,9 @@ const checkWin = () => {
       $(".player2 .row1 .I"),
       $(".player2 .row1 .N"),
       $(".player2 .row1 .G"),
-      $(".player2 .row1 .O")
+      $(".player2 .row1 .O"),
+      player2name,
+      " wins with bingo on row 1!"
     );
     // announceWin("Player 2 wins with bingo on row 1!").delay(1000);
   } else if (
@@ -192,7 +209,9 @@ const checkWin = () => {
       $(".player1 .row2 .I"),
       $(".player1 .row2 .N"),
       $(".player1 .row2 .G"),
-      $(".player1 .row2 .O")
+      $(".player1 .row2 .O"),
+      player1name,
+      " wins with bingo on row 2!"
     );
     // announceWin("Player 1 wins with bingo on row 2!").delay(1000);
   } else if (
@@ -208,7 +227,9 @@ const checkWin = () => {
       $(".player2 .row2 .I"),
       $(".player2 .row2 .N"),
       $(".player2 .row2 .G"),
-      $(".player2 .row2 .O")
+      $(".player2 .row2 .O"),
+      player2name,
+      " wins with bingo on row 2!"
     );
     // announceWin("Player 2 wins with bingo on row 2!").delay(1000);
   } else if (
@@ -224,7 +245,9 @@ const checkWin = () => {
       $(".player1 .row3 .I"),
       $(".player1 .row3 .N"),
       $(".player1 .row3 .G"),
-      $(".player1 .row3 .O")
+      $(".player1 .row3 .O"),
+      player1name,
+      " wins with bingo on row 3!"
     );
     // announceWin("Player 1 wins with bingo on row 3!").delay(1000);
   } else if (
@@ -240,7 +263,9 @@ const checkWin = () => {
       $(".player2 .row3 .I"),
       $(".player2 .row3 .N"),
       $(".player2 .row3 .G"),
-      $(".player2 .row3 .O")
+      $(".player2 .row3 .O"),
+      player2name,
+      " wins with bingo on row 3!"
     );
     // announceWin("Player 2 wins with bingo on row 3!").delay(1000);
   } else if (
@@ -256,7 +281,9 @@ const checkWin = () => {
       $(".player1 .row4 .I"),
       $(".player1 .row4 .N"),
       $(".player1 .row4 .G"),
-      $(".player1 .row4 .O")
+      $(".player1 .row4 .O"),
+      player1name,
+      " wins with bingo on row 4!"
     );
     // announceWin("Player 1 wins with bingo on row 4!").delay(1000);
   } else if (
@@ -272,7 +299,9 @@ const checkWin = () => {
       $(".player2 .row4 .I"),
       $(".player2 .row4 .N"),
       $(".player2 .row4 .G"),
-      $(".player2 .row4 .O")
+      $(".player2 .row4 .O"),
+      player2name,
+      " wins with bingo on row 4!"
     );
     // announceWin("Player 2 wins with bingo on row 4!").delay(1000);
   } else if (
@@ -288,7 +317,9 @@ const checkWin = () => {
       $(".player1 .row5 .I"),
       $(".player1 .row5 .N"),
       $(".player1 .row5 .G"),
-      $(".player1 .row5 .O")
+      $(".player1 .row5 .O"),
+      player1name,
+      " wins with bingo on row 5!"
     );
     // announceWin("Player 1 wins with bingo on row 5!").delay(1000);
   } else if (
@@ -304,7 +335,9 @@ const checkWin = () => {
       $(".player2 .row5 .I"),
       $(".player2 .row5 .N"),
       $(".player2 .row5 .G"),
-      $(".player2 .row5 .O")
+      $(".player2 .row5 .O"),
+      player2name,
+      " wins with bingo on row 5!"
     );
     // announceWin("Player 2 wins with bingo on row 5!").delay(1000);
   } else if (
@@ -321,7 +354,9 @@ const checkWin = () => {
       $(".player1 .row2 .B"),
       $(".player1 .row3 .B"),
       $(".player1 .row4 .B"),
-      $(".player1 .row5 .B")
+      $(".player1 .row5 .B"),
+      player1name,
+      " wins with bingo on column B!"
     );
     // announceWin("Player 1 wins with bingo on column B!").delay(1000);
   } else if (
@@ -337,7 +372,9 @@ const checkWin = () => {
       $(".player2 .row2 .B"),
       $(".player2 .row3 .B"),
       $(".player2 .row4 .B"),
-      $(".player2 .row5 .B")
+      $(".player2 .row5 .B"),
+      player2name,
+      " wins with bingo on column B!"
     );
     // announceWin("Player 2 wins with bingo on column B!").delay(1000);
   } else if (
@@ -353,7 +390,9 @@ const checkWin = () => {
       $(".player1 .row2 .I"),
       $(".player1 .row3 .I"),
       $(".player1 .row4 .I"),
-      $(".player1 .row5 .I")
+      $(".player1 .row5 .I"),
+      player1name,
+      " wins with bingo on column I!"
     );
     // announceWin("Player 1 wins with bingo on column I!").delay(1000);
   } else if (
@@ -369,7 +408,9 @@ const checkWin = () => {
       $(".player2 .row2 .I"),
       $(".player2 .row3 .I"),
       $(".player2 .row4 .I"),
-      $(".player2 .row5 .I")
+      $(".player2 .row5 .I"),
+      player2name,
+      " wins with bingo on column I!"
     );
     // announceWin("Player 2 wins with bingo on column I!").delay(1000);
   } else if (
@@ -385,7 +426,9 @@ const checkWin = () => {
       $(".player1 .row2 .N"),
       $(".player1 .row3 .N"),
       $(".player1 .row4 .N"),
-      $(".player1 .row5 .N")
+      $(".player1 .row5 .N"),
+      player1name,
+      " wins with bingo on column N!"
     );
     // announceWin("Player 1 wins with bingo on column N!").delay(1000);
   } else if (
@@ -401,7 +444,9 @@ const checkWin = () => {
       $(".player2 .row2 .N"),
       $(".player2 .row3 .N"),
       $(".player2 .row4 .N"),
-      $(".player2 .row5 .N")
+      $(".player2 .row5 .N"),
+      player2name,
+      " wins with bingo on column N!"
     );
     // announceWin("Player 2 wins with bingo on column N!").delay(1000);
   } else if (
@@ -417,7 +462,9 @@ const checkWin = () => {
       $(".player1 .row2 .G"),
       $(".player1 .row3 .G"),
       $(".player1 .row4 .G"),
-      $(".player1 .row5 .G")
+      $(".player1 .row5 .G"),
+      player1name,
+      " wins with bingo on column G!"
     );
     // announceWin("Player 1 wins with bingo on column G!").delay(1000);
   } else if (
@@ -433,7 +480,9 @@ const checkWin = () => {
       $(".player2 .row2 .G"),
       $(".player2 .row3 .G"),
       $(".player2 .row4 .G"),
-      $(".player2 .row5 .G")
+      $(".player2 .row5 .G"),
+      player2name,
+      " wins with bingo on column G!"
     );
     // announceWin("Player 2 wins with bingo on column G!").delay(1000);
   } else if (
@@ -449,7 +498,9 @@ const checkWin = () => {
       $(".player1 .row2 .O"),
       $(".player1 .row3 .O"),
       $(".player1 .row4 .O"),
-      $(".player1 .row5 .O")
+      $(".player1 .row5 .O"),
+      player1name,
+      " wins with bingo on column O!"
     );
     // announceWin("Player 1 wins with bingo on column O!").delay(1000);
   } else if (
@@ -465,7 +516,9 @@ const checkWin = () => {
       $(".player2 .row2 .O"),
       $(".player2 .row3 .O"),
       $(".player2 .row4 .O"),
-      $(".player2 .row5 .O")
+      $(".player2 .row5 .O"),
+      player2name,
+      " wins with bingo on column O!"
     );
     // announceWin("Player 2 wins with bingo on column O!").delay(1000);
   } else if (
@@ -483,7 +536,9 @@ const checkWin = () => {
       $(".player1 .row2 .I"),
       $(".player1 .row3 .N"),
       $(".player1 .row4 .G"),
-      $(".player1 .row5 .O")
+      $(".player1 .row5 .O"),
+      player1name,
+      " wins with bingo diagonally from the top left corner!"
     );
     // announceWin(
     //   "Player 1 wins with bingo diagonally from the top left corner!"
@@ -502,7 +557,9 @@ const checkWin = () => {
       $(".player2 .row2 .I"),
       $(".player2 .row3 .N"),
       $(".player2 .row4 .G"),
-      $(".player2 .row5 .O")
+      $(".player2 .row5 .O"),
+      player2name,
+      " wins with bingo diagonally from the top left corner!"
     );
     // announceWin(
     //   "Player 2 wins with bingo diagonally from the top left corner!"
@@ -522,7 +579,9 @@ const checkWin = () => {
       $(".player1 .row2 .G"),
       $(".player1 .row3 .N"),
       $(".player1 .row4 .I"),
-      $(".player1 .row5 .B")
+      $(".player1 .row5 .B"),
+      player1name,
+      " wins with bingo diagonally from the top right corner!"
     );
     // announceWin(
     //   "Player 1 wins with bingo diagonally from the top right corner!"
@@ -541,7 +600,9 @@ const checkWin = () => {
       $(".player2 .row2 .G"),
       $(".player2 .row3 .N"),
       $(".player2 .row4 .I"),
-      $(".player2 .row5 .B")
+      $(".player2 .row5 .B"),
+      player2name,
+      " wins with bingo diagonally from the top right corner!"
     );
     // announceWin(
     //   "Player 2 wins with bingo diagonally from the top right corner!"
@@ -554,12 +615,12 @@ const checkWin = () => {
 /////////////////////////////////
 
 const main = () => {
-    const $classicMode = $("#classicMode");
-    const $hardMode = $("#hardMode");
-    const $edgesMode = $("#edgesMode");
-    $classicMode.on("click", startGame);
-    $hardMode.on("click", startGame);
-    $edgesMode.on("click", startGame);
+  const $classicMode = $("#classicMode");
+  const $hardMode = $("#hardMode");
+  const $edgesMode = $("#edgesMode");
+  $classicMode.on("click", startGame);
+  $hardMode.on("click", startGame);
+  $edgesMode.on("click", startGame);
 };
 
 $(main);

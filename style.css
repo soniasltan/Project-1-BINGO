@@ -44,8 +44,11 @@ caption {
   font-size: 22px;
 }
 
-h1 {
+h1.currentNumber {
   text-align: center;
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .numberCalled {
@@ -61,93 +64,111 @@ h1 {
 
 .hit {
   border-radius: 50%;
-  background-color: rgba(255,0,255,0.5);
+  background-color: rgba(255, 0, 255, 0.5);
   margin: auto;
 }
 
 .win {
-    border-radius: 50%;
-    background-color: rgba(255,230,0,1);
-    margin: auto;
+  border-radius: 50%;
+  background-color: rgba(255, 230, 0, 1);
+  margin: auto;
   color: red;
   font-size: 27px;
 }
 
-
-.winMessage {
-    border-radius: 50%;
-    background-color: rgba(255,230,0,1);
-    margin: auto;
-    display: flex;
+.winAlert {
+  border-radius: 50%;
+  background-color: rgba(255, 230, 0, 1);
+  margin: auto;
+  display: flex;
   justify-content: center;
   align-items: center;
-    height: 125px;
-    width: 125px;
-    color: red;
-    font-size: 40px;
+  height: 125px;
+  width: 125px;
+  color: red;
+  font-size: 40px;
 }
 
 #gameScreen {
-    display: none;
+  display: none;
 }
 
 #startScreen {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .intro {
-    text-align: center;
-    margin: -2px 0;
+  text-align: center;
+  margin: -2px 0;
 }
 
-h2.intro{
-    font-size:30px;
+h2.intro {
+  font-size: 30px;
 }
 
 h1.intro {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .modeSelection {
-    display: flex;
-    width: 80%;
-    justify-content: space-around;
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
 }
 
-#classicMode, #hardMode, #edgesMode {
-    border-radius: 5px;
-    height: 100px;
-    width: 180px;
-    text-align: center;
-    background-color: lightskyblue;
-    display: flex;
-    flex-direction: column;
+#classicMode,
+#hardMode,
+#edgesMode {
+  border-radius: 5px;
+  height: 100px;
+  width: 180px;
+  text-align: center;
+  background-color: lightskyblue;
+  display: flex;
+  flex-direction: column;
 }
 
-#classicMode:hover, #hardMode:hover, #edgesMode:hover {
-background-color: lightsalmon;
+#classicMode:hover,
+#hardMode:hover,
+#edgesMode:hover {
+  background-color: lightsalmon;
 }
 
 p {
-    font-size: 13px;
-    margin: 0 auto;
+  font-size: 13px;
+  margin: 0 auto;
 }
 
 h5 {
-    font-size: 20px;
-    margin: 22px 0 5px 0;
-
+  font-size: 20px;
+  margin: 22px 0 5px 0;
 }
 
 .nameSelection {
-    margin: 50px 0 0 0;
-    display: flex;
-    justify-content: space-around;
+  margin: 50px 0 0 0;
+  display: flex;
+  justify-content: space-around;
 }
 
-.input1, .input2 {
-    margin: 20px;
+.input1,
+.input2 {
+  margin: 20px;
 }
 
+.topDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.topDisplay h2 {
+  color: red;
+}
+
+h1 {
+  font-size: 45px;
+  margin: -10px 0 15px 0;
+}
