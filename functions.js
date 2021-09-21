@@ -1,6 +1,22 @@
 /////////////////
 // to show game screen
-
+const startGame = () => {
+    $("#startScreen").toggle();
+    $('#gameScreen').toggle();
+    
+    const $player1card = $(".player1");
+    const $player2card = $(".player2");
+    chooseRandomNums($player1card); // creates ramdom numbers for bingo card
+    $(".player1 tr.row3 td.N").text("FREE");
+    chooseRandomNums($player2card);
+    $(".player2 tr.row3 td.N").text("FREE");
+    $(".N:contains('FREE')")
+      .addClass("hit")
+      .attr("id", "N3")
+      .css("font-size", "16px");
+    const $numberCalled = $(".numberCalled");
+    $numberCalled.on("click", callNumbers); // show new bingo number on click
+}
 /////////////////
 // for bingo cards
 const availCardNums = [
@@ -535,22 +551,12 @@ const checkWin = () => {
 /////////////////////////////////
 
 const main = () => {
-    const $classicMode = $(".classicMode");
-    const $hardMode = $(".hardMode");
-    const $edgesMode = $(".edgesMode");
-    // $classicMode.on("click",)
-  const $player1card = $(".player1");
-  const $player2card = $(".player2");
-  chooseRandomNums($player1card); // creates ramdom numbers for bingo card
-  $(".player1 tr.row3 td.N").text("FREE");
-  chooseRandomNums($player2card);
-  $(".player2 tr.row3 td.N").text("FREE");
-  $(".N:contains('FREE')")
-    .addClass("hit")
-    .attr("id", "N3")
-    .css("font-size", "16px");
-  const $numberCalled = $(".numberCalled");
-  $numberCalled.on("click", callNumbers); // show new bingo number on click
+    const $classicMode = $("#classicMode");
+    const $hardMode = $("#hardMode");
+    const $edgesMode = $("#edgesMode");
+    $classicMode.on("click", startGame);
+    $hardMode.on("click", startGame);
+    $edgesMode.on("click", startGame);
 };
 
 $(main);
