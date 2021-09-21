@@ -111,114 +111,198 @@ const callNumbers = () => {
 // to evaluate win
 
 const checkWin = () => {
-  // const $player1 = $(".player1");
-  // const $player2 = $(".player2");
   if (
-    $(".row1.b").hasClass("hit") &&
-    $(".row1.i").hasClass("hit") &&
-    $(".row1.n").hasClass("hit") &&
-    $(".row1.g").hasClass("hit") &&
-    $(".row1.o").hasClass("hit") === true
+    $(".player1 .row1 .B").hasClass("hit") &&
+    $(".player1 .row1 .I").hasClass("hit") &&
+    $(".player1 .row1 .N").hasClass("hit") &&
+    $(".player1 .row1 .G").hasClass("hit") &&
+    $(".player1 .row1 .O").hasClass("hit") === true
   ) {
     //horizontal wins
-    console.log("win!");
+    console.log("Player 1 wins with bingo on row 1!");
   } else if (
-    $(".row2.b").hasClass("hit") &&
-    $(".row2.i").hasClass("hit") &&
-    $(".row2.n").hasClass("hit") &&
-    $(".row2.g").hasClass("hit") &&
-    $(".row2.o").hasClass("hit") === true
+    $(".player2 .row1 .B").hasClass("hit") &&
+    $(".player2 .row1 .I").hasClass("hit") &&
+    $(".player2 .row1 .N").hasClass("hit") &&
+    $(".player2 .row1 .G").hasClass("hit") &&
+    $(".player2 .row1 .O").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 2 wins with bingo on row 1!");
   } else if (
-    $(".row3.b").hasClass("hit") &&
-    $(".row3.i").hasClass("hit") &&
-    $(".row3.n").hasClass("hit") &&
-    $(".row3.g").hasClass("hit") &&
-    $(".row3.o").hasClass("hit") === true
+    $(".player1 .row2 .B").hasClass("hit") &&
+    $(".player1 .row2 .I").hasClass("hit") &&
+    $(".player1 .row2 .N").hasClass("hit") &&
+    $(".player1 .row2 .G").hasClass("hit") &&
+    $(".player1 .row2 .O").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 1 wins with bingo on row 2!");
   } else if (
-    $(".row4.b").hasClass("hit") &&
-    $(".row4.i").hasClass("hit") &&
-    $(".row4.n").hasClass("hit") &&
-    $(".row4.g").hasClass("hit") &&
-    $(".row4.o").hasClass("hit") === true
+    $(".player2 .row2 .B").hasClass("hit") &&
+    $(".player2 .row2 .I").hasClass("hit") &&
+    $(".player2 .row2 .N").hasClass("hit") &&
+    $(".player2 .row2 .G").hasClass("hit") &&
+    $(".player2 .row2 .O").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 2 wins with bingo on row 2!");
   } else if (
-    $(".row5.b").hasClass("hit") &&
-    $(".row5.i").hasClass("hit") &&
-    $(".row5.n").hasClass("hit") &&
-    $(".row5.g").hasClass("hit") &&
-    $(".row5.o").hasClass("hit") === true
+    $(".player1 .row3 .B").hasClass("hit") &&
+    $(".player1 .row3 .I").hasClass("hit") &&
+    $(".player1 .row3 .N").hasClass("hit") &&
+    $(".player1 .row3 .G").hasClass("hit") &&
+    $(".player1 .row3 .O").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 1 wins with bingo on row 3!");
   } else if (
-    $(".row1.b").hasClass("hit") &&
-    $(".row2.b").hasClass("hit") &&
-    $(".row3.b").hasClass("hit") &&
-    $(".row4.b").hasClass("hit") &&
-    $(".row5.b").hasClass("hit") === true
+    $(".player2 .row3 .B").hasClass("hit") &&
+    $(".player2 .row3 .I").hasClass("hit") &&
+    $(".player2 .row3 .N").hasClass("hit") &&
+    $(".player2 .row3 .G").hasClass("hit") &&
+    $(".player2 .row3 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 2 wins with bingo on row 3!");
+  } else if (
+    $(".player1 .row4 .B").hasClass("hit") &&
+    $(".player1 .row4 .I").hasClass("hit") &&
+    $(".player1 .row4 .N").hasClass("hit") &&
+    $(".player1 .row4 .G").hasClass("hit") &&
+    $(".player1 .row4 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 1 wins with bingo on row 4!");
+  } else if (
+    $(".player2 .row4 .B").hasClass("hit") &&
+    $(".player2 .row4 .I").hasClass("hit") &&
+    $(".player2 .row4 .N").hasClass("hit") &&
+    $(".player2 .row4 .G").hasClass("hit") &&
+    $(".player2 .row4 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 2 wins with bingo on row 4!");
+  } else if (
+    $(".player1 .row5 .B").hasClass("hit") &&
+    $(".player1 .row5 .I").hasClass("hit") &&
+    $(".player1 .row5 .N").hasClass("hit") &&
+    $(".player1 .row5 .G").hasClass("hit") &&
+    $(".player1 .row5 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 1 wins with bingo on row 5!");
+  } else if (
+    $(".player2 .row5 .B").hasClass("hit") &&
+    $(".player2 .row5 .I").hasClass("hit") &&
+    $(".player2 .row5 .N").hasClass("hit") &&
+    $(".player2 .row5 .G").hasClass("hit") &&
+    $(".player2 .row5 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 2 wins with bingo on row 5!");
+  } else if (
+    $(".player1 .row1 .B").hasClass("hit") &&
+    $(".player1 .row2 .B").hasClass("hit") &&
+    $(".player1 .row3 .B").hasClass("hit") &&
+    $(".player1 .row4 .B").hasClass("hit") &&
+    $(".player1 .row5 .B").hasClass("hit") === true
   ) {
     // vertical wins
-    console.log("win!");
+    console.log("Player 1 wins with bingo on column B!");
   } else if (
-    $(".row1.b").hasClass("hit") &&
-    $(".row2.b").hasClass("hit") &&
-    $(".row3.b").hasClass("hit") &&
-    $(".row4.b").hasClass("hit") &&
-    $(".row5.b").hasClass("hit") === true
+    $(".player2 .row1 .B").hasClass("hit") &&
+    $(".player2 .row2 .B").hasClass("hit") &&
+    $(".player2 .row3 .B").hasClass("hit") &&
+    $(".player2 .row4 .B").hasClass("hit") &&
+    $(".player2 .row5 .B").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 2 wins with bingo on column B!");
   } else if (
-    $(".row1.i").hasClass("hit") &&
-    $(".row2.i").hasClass("hit") &&
-    $(".row3.i").hasClass("hit") &&
-    $(".row4.i").hasClass("hit") &&
-    $(".row5.i").hasClass("hit") === true
+    $(".player1 .row1 .I").hasClass("hit") &&
+    $(".player1 .row2 .I").hasClass("hit") &&
+    $(".player1 .row3 .I").hasClass("hit") &&
+    $(".player1 .row4 .I").hasClass("hit") &&
+    $(".player1 .row5 .I").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 1 wins with bingo on column I!");
   } else if (
-    $(".row1.n").hasClass("hit") &&
-    $(".row2.n").hasClass("hit") &&
-    $(".row3.n").hasClass("hit") &&
-    $(".row4.n").hasClass("hit") &&
-    $(".row5.n").hasClass("hit") === true
+    $(".player2 .row1 .I").hasClass("hit") &&
+    $(".player2 .row2 .I").hasClass("hit") &&
+    $(".player2 .row3 .I").hasClass("hit") &&
+    $(".player2 .row4 .I").hasClass("hit") &&
+    $(".player2 .row5 .I").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 2 wins with bingo on column I!");
   } else if (
-    $(".row1.g").hasClass("hit") &&
-    $(".row2.g").hasClass("hit") &&
-    $(".row3.g").hasClass("hit") &&
-    $(".row4.g").hasClass("hit") &&
-    $(".row5.g").hasClass("hit") === true
+    $(".player1 .row1 .N").hasClass("hit") &&
+    $(".player1 .row2 .N").hasClass("hit") &&
+    $(".player1 .row3 .N").hasClass("hit") &&
+    $(".player1 .row4 .N").hasClass("hit") &&
+    $(".player1 .row5 .N").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 1 wins with bingo on column N!");
   } else if (
-    $(".row1.o").hasClass("hit") &&
-    $(".row2.o").hasClass("hit") &&
-    $(".row3.o").hasClass("hit") &&
-    $(".row4.o").hasClass("hit") &&
-    $(".row5.o").hasClass("hit") === true
+    $(".player2 .row1 .N").hasClass("hit") &&
+    $(".player2 .row2 .N").hasClass("hit") &&
+    $(".player2 .row3 .N").hasClass("hit") &&
+    $(".player2 .row4 .N").hasClass("hit") &&
+    $(".player2 .row5 .N").hasClass("hit") === true
   ) {
-    console.log("win!");
+    console.log("Player 2 wins with bingo on column N!");
   } else if (
-    $(".row1.b").hasClass("hit") &&
-    $(".row2.i").hasClass("hit") &&
-    $(".row4.g").hasClass("hit") &&
-    $(".row5.o").hasClass("hit") === true
+    $(".player1 .row1 .G").hasClass("hit") &&
+    $(".player1 .row2 .G").hasClass("hit") &&
+    $(".player1 .row3 .G").hasClass("hit") &&
+    $(".player1 .row4 .G").hasClass("hit") &&
+    $(".player1 .row5 .G").hasClass("hit") === true
+  ) {
+    console.log("Player 1 wins with bingo on column G!");
+  } else if (
+    $(".player2 .row1 .G").hasClass("hit") &&
+    $(".player2 .row2 .G").hasClass("hit") &&
+    $(".player2 .row3 .G").hasClass("hit") &&
+    $(".player2 .row4 .G").hasClass("hit") &&
+    $(".player2 .row5 .G").hasClass("hit") === true
+  ) {
+    console.log("Player 2 wins with bingo on column G!");
+  } else if (
+    $(".player1 .row1 .O").hasClass("hit") &&
+    $(".player1 .row2 .O").hasClass("hit") &&
+    $(".player1 .row3 .O").hasClass("hit") &&
+    $(".player1 .row4 .O").hasClass("hit") &&
+    $(".player1 .row5 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 1 wins with bingo on column O!");
+  } else if (
+    $(".player2 .row1 .O").hasClass("hit") &&
+    $(".player2 .row2 .O").hasClass("hit") &&
+    $(".player2 .row3 .O").hasClass("hit") &&
+    $(".player2 .row4 .O").hasClass("hit") &&
+    $(".player2 .row5 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 2 wins with bingo on column O!");
+  } else if (
+    $(".player1 .row1 .B").hasClass("hit") &&
+    $(".player1 .row2 .I").hasClass("hit") &&
+    $(".player1 .row4 .G").hasClass("hit") &&
+    $(".player1 .row5 .O").hasClass("hit") === true
   ) {
     // diagonal win from top left corner
-    console.log("win!");
+    console.log("Player 1 wins with bingo diagonally from the top left corner!");
   } else if (
-    $(".row1.o").hasClass("hit") &&
-    $(".row2.g").hasClass("hit") &&
-    $(".row4.i").hasClass("hit") &&
-    $(".row5.b").hasClass("hit") === true
+    $(".player2 .row1 .B").hasClass("hit") &&
+    $(".player2 .row2 .I").hasClass("hit") &&
+    $(".player2 .row4 .G").hasClass("hit") &&
+    $(".player2 .row5 .O").hasClass("hit") === true
+  ) {
+    console.log("Player 2 wins with bingo diagonally from the top left corner!");
+  } else if (
+    $(".player1 .row1 .O").hasClass("hit") &&
+    $(".player1 .row2 .G").hasClass("hit") &&
+    $(".player1 .row4 .I").hasClass("hit") &&
+    $(".player1 .row5 .B").hasClass("hit") === true
   ) {
     // diagonal win from top right corner
-    console.log("win!");
+    console.log("Player 1 wins with bingo diagonally from the top right corner!");
+  } else if (
+    $(".player2 .row1 .O").hasClass("hit") &&
+    $(".player2 .row2 .G").hasClass("hit") &&
+    $(".player2 .row4 .I").hasClass("hit") &&
+    $(".player2 .row5 .B").hasClass("hit") === true
+  ) {
+    console.log("Player 2 wins with bingo diagonally from the top right corner!");
   } else {
     console.log("no wins yet!");
   }
