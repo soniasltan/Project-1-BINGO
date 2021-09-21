@@ -14,41 +14,72 @@
     <title>B-I-N-G-O</title>
   </head>
   <body>
-    <h1>BINGO!</h1>
-    <div class="numberCalled">
-        <h1 class ="currentNumber">Click me</h1>
+    <div id="startScreen">
+      <h2 class="intro">Let's play</h2>
+      <h1 class="intro">BINGO</h1>
+      <div class="nameSelection">
+        <div class="input1">
+          <label for="player1">Player 1 name:</label>
+          <input type="text" id="player1" />
+        </div>
+        <div class="input2">
+          <label for="player2">Player 2 name:</label>
+          <input type="text" id="player2" />
+        </div>
+      </div>
+      <h4>Select game mode below</h4>
+      <div class="modeSelection">
+        <div id="classicMode">
+          <h5>CLASSIC</h5>
+          <p>Complete 1 line in any direction to win</p>
+        </div>
+        <div id="hardMode">
+          <h5>HARD</h5>
+          <p>Complete 4 lines in any direction to win</p>
+        </div>
+        <div id="edgesMode">
+          <h5>EDGES</h5>
+          <p>Complete 4 lines along the card edges to win</p>
+        </div>
+      </div>
     </div>
-    <div class="cards">
-      <table class="player1">
-        <caption>
-          Player 1
-        </caption>
-        <thead>
-          <tr>
-            <th>B</th>
-            <th>I</th>
-            <th>N</th>
-            <th>G</th>
-            <th>O</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <table class="player2">
-        <caption>
-          Player 2
-        </caption>
-        <thead>
-          <tr>
-            <th>B</th>
-            <th>I</th>
-            <th>N</th>
-            <th>G</th>
-            <th>O</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <div id="gameScreen">
+      <h1>BINGO!</h1>
+      <div class="numberCalled">
+        <h1 class="currentNumber">Click me</h1>
+      </div>
+      <div class="cards">
+        <table class="player1">
+          <caption>
+            Player 1
+          </caption>
+          <thead>
+            <tr>
+              <th>B</th>
+              <th>I</th>
+              <th>N</th>
+              <th>G</th>
+              <th>O</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <table class="player2">
+          <caption>
+            Player 2
+          </caption>
+          <thead>
+            <tr>
+              <th>B</th>
+              <th>I</th>
+              <th>N</th>
+              <th>G</th>
+              <th>O</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>

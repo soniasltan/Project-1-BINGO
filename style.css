@@ -86,3 +86,67 @@ h1 {
     color: red;
     font-size: 40px;
 }
+
+#gameScreen {
+    display: none;
+}
+
+#startScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.intro {
+    text-align: center;
+    margin: -2px 0;
+}
+
+h2.intro{
+    font-size:30px;
+}
+
+h1.intro {
+    font-size: 50px;
+}
+
+.modeSelection {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+
+#classicMode, #hardMode, #edgesMode {
+    border-radius: 5px;
+    height: 100px;
+    width: 180px;
+    text-align: center;
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: column;
+}
+
+#classicMode:hover, #hardMode:hover, #edgesMode:hover {
+background-color: lightsalmon;
+}
+
+p {
+    font-size: 13px;
+    margin: 0 auto;
+}
+
+h5 {
+    font-size: 20px;
+    margin: 22px 0 5px 0;
+
+}
+
+.nameSelection {
+    margin: 50px 0 0 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input1, .input2 {
+    margin: 20px;
+}

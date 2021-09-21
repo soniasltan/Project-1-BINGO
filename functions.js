@@ -1,4 +1,7 @@
 /////////////////
+// to show game screen
+
+/////////////////
 // for bingo cards
 const availCardNums = [
   { col: "B", nums: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] },
@@ -532,6 +535,10 @@ const checkWin = () => {
 /////////////////////////////////
 
 const main = () => {
+    const $classicMode = $(".classicMode");
+    const $hardMode = $(".hardMode");
+    const $edgesMode = $(".edgesMode");
+    // $classicMode.on("click",)
   const $player1card = $(".player1");
   const $player2card = $(".player2");
   chooseRandomNums($player1card); // creates ramdom numbers for bingo card
