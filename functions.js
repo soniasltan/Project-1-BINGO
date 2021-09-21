@@ -147,7 +147,7 @@ const declareWin = (
   square3.removeClass("hit").addClass("win");
   square4.removeClass("hit").addClass("win");
   square5.removeClass("hit").addClass("win");
-  $(".numberCalled").text("WIN!").addClass("winAlert");
+  $(".numberCalled").text("BINGO!").addClass("winAlert");
   const $topDisplay = $(".topDisplay");
   const $winMessage = $("<h2>").text("" + winnerName + message);
   $topDisplay.append($winMessage);
