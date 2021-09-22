@@ -133,37 +133,42 @@ const callNumbers = () => {
   $(".player1 ." + currentNumber).addClass("hit");
   $(".player2 ." + currentNumber).addClass("hit"); //if a td on the bingo card matches the current number being called, adds "hit" class to the td and marks it with a pink circle
 
-  checkWin("player1");
-  checkWin("player2");
-  /////////////////////////////////
+  const player1name = $(".player1 caption").text();
+  const player2name = $(".player2 caption").text();
+
+  if (checkWin("player1") && checkWin("player2") === true) {
+    declareWin();
+    $("#winDisplay").text("It's a tie!");
+  } else if (checkWin("player1") === true) {
+    declareWin();
+    $("#winDisplay").text(player1name + " wins!");
+  } else if (checkWin("player2") === true) {
+    declareWin();
+    $("#winDisplay").text(player2name + " wins!");
+  } else console.log("no wins yet!");
 };
 
 /////////////////////////////////
 // to evaluate win
 
-const declareWin = (
-  square1,
-  square2,
-  square3,
-  square4,
-  square5,
-  winnerName,
-  message
-) => {
+const showWin = (square1, square2, square3, square4, square5) => {
   console.log("winner winner chicken dinner");
   square1.removeClass("hit").addClass("win");
   square2.removeClass("hit").addClass("win");
   square3.removeClass("hit").addClass("win");
   square4.removeClass("hit").addClass("win");
   square5.removeClass("hit").addClass("win");
+};
+
+const declareWin = () => {
   $(".numberCalled").text("BINGO!").addClass("winAlert");
   const $topDisplay = $(".topDisplay");
-  const $winMessage = $("<h2>").text("" + winnerName + message);
-  $topDisplay.append($winMessage);
+  const $winDisplay = $("<h2>").attr("id", "winDisplay");
+  $topDisplay.append($winDisplay);
 };
 
 const checkWin = (player) => {
-  const playername = $("."+player+" caption").text();
+  //   const playername = $("." + player + " caption").text();
 
   const winCon1 =
     $("." + player + " .row1 .B").hasClass("hit") &&
@@ -254,145 +259,165 @@ const checkWin = (player) => {
     winCon1 === true
   ) {
     console.log("Player wins with bingo on row 1!");
-    declareWin(
-      $("."+player+" .row1 .B"),
-      $("."+player+" .row1 .I"),
-      $("."+player+" .row1 .N"),
-      $("."+player+" .row1 .G"),
-      $("."+player+" .row1 .O"),
-      playername,
-      " wins with bingo on row 1!"
+    showWin(
+      $("." + player + " .row1 .B"),
+      $("." + player + " .row1 .I"),
+      $("." + player + " .row1 .N"),
+      $("." + player + " .row1 .G"),
+      $("." + player + " .row1 .O")
+      //   ,
+      //   playername,
+      //   " wins with bingo on row 1!"
     );
+    return true;
   } else if (winCon2 === true) {
     console.log("Player wins with bingo on row 2!");
-    declareWin(
-      $("."+player+" .row2 .B"),
-      $("."+player+" .row2 .I"),
-      $("."+player+" .row2 .N"),
-      $("."+player+" .row2 .G"),
-      $("."+player+" .row2 .O"),
-      playername,
-      " wins with bingo on row 2!"
+    showWin(
+      $("." + player + " .row2 .B"),
+      $("." + player + " .row2 .I"),
+      $("." + player + " .row2 .N"),
+      $("." + player + " .row2 .G"),
+      $("." + player + " .row2 .O")
+      //   ,
+      //   playername,
+      //   " wins with bingo on row 2!"
     );
+    return true;
   } else if (winCon3 === true) {
     console.log("Player wins with bingo on row 3!");
-    declareWin(
-      $("."+player+" .row3 .B"),
-      $("."+player+" .row3 .I"),
-      $("."+player+" .row3 .N"),
-      $("."+player+" .row3 .G"),
-      $("."+player+" .row3 .O"),
-      playername,
-      " wins with bingo on row 3!"
+    showWin(
+      $("." + player + " .row3 .B"),
+      $("." + player + " .row3 .I"),
+      $("." + player + " .row3 .N"),
+      $("." + player + " .row3 .G"),
+      $("." + player + " .row3 .O")
+      //   ,
+      //   playername,
+      //   " wins with bingo on row 3!"
     );
+    return true;
   } else if (winCon4 === true) {
     console.log("Player wins with bingo on row 4!");
-    declareWin(
-      $("."+player+" .row4 .B"),
-      $("."+player+" .row4 .I"),
-      $("."+player+" .row4 .N"),
-      $("."+player+" .row4 .G"),
-      $("."+player+" .row4 .O"),
-      playername,
-      " wins with bingo on row 4!"
+    showWin(
+      $("." + player + " .row4 .B"),
+      $("." + player + " .row4 .I"),
+      $("." + player + " .row4 .N"),
+      $("." + player + " .row4 .G"),
+      $("." + player + " .row4 .O")
+      //   ,
+      //   playername,
+      //   " wins with bingo on row 4!"
     );
+    return true;
   } else if (winCon5 === true) {
     console.log("Player wins with bingo on row 5!");
-    declareWin(
-      $("."+player+" .row5 .B"),
-      $("."+player+" .row5 .I"),
-      $("."+player+" .row5 .N"),
-      $("."+player+" .row5 .G"),
-      $("."+player+" .row5 .O"),
-      playername,
-      " wins with bingo on row 5!"
+    showWin(
+      $("." + player + " .row5 .B"),
+      $("." + player + " .row5 .I"),
+      $("." + player + " .row5 .N"),
+      $("." + player + " .row5 .G"),
+      $("." + player + " .row5 .O")
+      //   ,
+      //   playername,
+      //   " wins with bingo on row 5!"
     );
+    return true;
   } else if (winCon6 === true) {
     // vertical wins
     console.log("Player wins with bingo on column B!");
-    declareWin(
-      $("."+player+" .row1 .B"),
-      $("."+player+" .row2 .B"),
-      $("."+player+" .row3 .B"),
-      $("."+player+" .row4 .B"),
-      $("."+player+" .row5 .B"),
-      playername,
-      " wins with bingo on column B!"
+    showWin(
+      $("." + player + " .row1 .B"),
+      $("." + player + " .row2 .B"),
+      $("." + player + " .row3 .B"),
+      $("." + player + " .row4 .B"),
+      $("." + player + " .row5 .B")
+      //   ,
+      //   playername,
+      //   " wins with bingo on column B!"
     );
+    return true;
   } else if (winCon7 === true) {
     console.log("Player wins with bingo on column I!");
-    declareWin(
-      $("."+player+" .row1 .I"),
-      $("."+player+" .row2 .I"),
-      $("."+player+" .row3 .I"),
-      $("."+player+" .row4 .I"),
-      $("."+player+".row5 .I"),
-      playername,
-      " wins with bingo on column I!"
+    showWin(
+      $("." + player + " .row1 .I"),
+      $("." + player + " .row2 .I"),
+      $("." + player + " .row3 .I"),
+      $("." + player + " .row4 .I"),
+      $("." + player + " .row5 .I")
+      //   ,
+      //   playername,
+      //   " wins with bingo on column I!"
     );
+    return true;
   } else if (winCon8 === true) {
     console.log("Player wins with bingo on column N!");
-    declareWin(
-      $("."+player+" .row1 .N"),
-      $("."+player+" .row2 .N"),
-      $("."+player+" .row3 .N"),
-      $("."+player+" .row4 .N"),
-      $("."+player+" .row5 .N"),
-      playername,
-      " wins with bingo on column N!"
+    showWin(
+      $("." + player + " .row1 .N"),
+      $("." + player + " .row2 .N"),
+      $("." + player + " .row3 .N"),
+      $("." + player + " .row4 .N"),
+      $("." + player + " .row5 .N")
+      //   ,
+      //   playername,
+      //   " wins with bingo on column N!"
     );
+    return true;
   } else if (winCon9 === true) {
     console.log("Player wins with bingo on column G!");
-    declareWin(
-      $("."+player+" .row1 .G"),
-      $("."+player+" .row2 .G"),
-      $("."+player+" .row3 .G"),
-      $("."+player+" .row4 .G"),
-      $("."+player+" .row5 .G"),
-      playername,
-      " wins with bingo on column G!"
+    showWin(
+      $("." + player + " .row1 .G"),
+      $("." + player + " .row2 .G"),
+      $("." + player + " .row3 .G"),
+      $("." + player + " .row4 .G"),
+      $("." + player + " .row5 .G")
+      //   ,
+      //   playername,
+      //   " wins with bingo on column G!"
     );
+    return true;
   } else if (winCon10 === true) {
     console.log("Player wins with bingo on column O!");
-    declareWin(
-      $("."+player+" .row1 .O"),
-      $("."+player+".row2 .O"),
-      $("."+player+" .row3 .O"),
-      $("."+player+" .row4 .O"),
-      $("."+player+" .row5 .O"),
-      playername,
-      " wins with bingo on column O!"
+    showWin(
+      $("." + player + " .row1 .O"),
+      $("." + player + ".row2 .O"),
+      $("." + player + " .row3 .O"),
+      $("." + player + " .row4 .O"),
+      $("." + player + " .row5 .O")
+      //   ,
+      //   playername,
+      //   " wins with bingo on column O!"
     );
+    return true;
   } else if (winCon11 === true) {
     // diagonal win from top left corner
-    console.log(
-      "Player wins with bingo diagonally from the top left corner!"
+    console.log("Player wins with bingo diagonally from the top left corner!");
+    showWin(
+      $("." + player + " .row1 .B"),
+      $("." + player + " .row2 .I"),
+      $("." + player + " .row3 .N"),
+      $("." + player + " .row4 .G"),
+      $("." + player + " .row5 .O")
+      //   ,
+      //   playername,
+      //   " wins with bingo diagonally from the top left corner!"
     );
-    declareWin(
-      $("."+player+" .row1 .B"),
-      $("."+player+" .row2 .I"),
-      $("."+player+" .row3 .N"),
-      $("."+player+" .row4 .G"),
-      $("."+player+" .row5 .O"),
-      playername,
-      " wins with bingo diagonally from the top left corner!"
-    );
+    return true;
   } else if (winCon12 === true) {
     // diagonal win from top right corner
-    console.log(
-      "Player wins with bingo diagonally from the top right corner!"
+    console.log("Player wins with bingo diagonally from the top right corner!");
+    showWin(
+      $("." + player + " .row1 .O"),
+      $("." + player + " .row2 .G"),
+      $("." + player + " .row3 .N"),
+      $("." + player + " .row4 .I"),
+      $("." + player + " .row5 .B")
+      //   ,
+      //   playername,
+      //   " wins with bingo diagonally from the top right corner!"
     );
-    declareWin(
-      $("."+player+" .row1 .O"),
-      $("."+player+" .row2 .G"),
-      $("."+player+" .row3 .N"),
-      $("."+player+" .row4 .I"),
-      $("."+player+" .row5 .B"),
-      playername,
-      " wins with bingo diagonally from the top right corner!"
-    );
+    return true;
   } else {
-    console.log("no wins yet!");
+    return false;
   }
 };
 
