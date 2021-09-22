@@ -3,10 +3,18 @@
 const startGame = () => {
   $("#startScreen").toggle();
   $("#gameScreen").toggle();
-  const player1input = $("#player1name").val();
-  const player2input = $("#player2name").val();
-  $(".player1 caption").text(player1input);
-  $(".player2 caption").text(player2input);
+  const $player1input = $("#player1name")
+  const $player2input = $("#player2name")
+  if ($player1input.val() === "") {
+      $(".player1 caption").text($player1input.placeholder());
+  } else {
+      $(".player1 caption").text($player1input.val())
+  }
+  if ($player2input.val() === "") {
+    $(".player2 caption").text($player2input.placeholder());
+} else {
+    $(".player2 caption").text($player2input.val())
+}
   const $player1card = $(".player1");
   const $player2card = $(".player2");
   chooseRandomNums($player1card); // creates ramdom numbers for bingo card
