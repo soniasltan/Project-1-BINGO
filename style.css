@@ -19,12 +19,12 @@ td {
 thead,
 tr,
 td {
-  height: 50px;
-  width: 50px;
+  height: 80px;
+  width: 80px;
 }
 
 th {
-  font-size: 36px;
+  font-size: 65px;
 }
 
 thead {
@@ -35,7 +35,7 @@ thead {
 
 td {
   text-align: center;
-  font-size: 25px;
+  font-size: 40px;
 }
 
 .cards {
@@ -49,7 +49,7 @@ caption {
 
 h1.currentNumber {
   text-align: center;
-  font-size: 30px;
+  font-size: 35px;
   padding: 0px;
   margin: 0px;
 }
@@ -57,8 +57,8 @@ h1.currentNumber {
 .numberCalled {
   border-radius: 50%;
   background-color: turquoise;
-  height: 120px;
-  width: 120px;
+  height: 180px;
+  width: 180px;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -106,7 +106,7 @@ h1.currentNumber {
 
 label {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .modeSelection {
@@ -114,20 +114,20 @@ label {
   width: 100%;
   padding-bottom: 80px;
   justify-content: center;
-  background-color: rgba(250, 250, 250, 0.8);
+
 }
 
 #classicMode,
 #diamondMode,
 #edgesMode {
   border-radius: 5px;
-  height: 140px;
-  width: 200px;
+  height: 180px;
+  width: 240px;
   text-align: center;
   background-color: lightskyblue;
   display: flex;
   flex-direction: column;
-  margin: 0 35px;
+  margin: 40px 35px;
 }
 
 #classicMode {
@@ -142,7 +142,7 @@ label {
 
 #edgesMode {
   background: url(https://t4.ftcdn.net/jpg/03/21/48/73/360_F_321487379_sYChYvBCoLhrOmZLOXksLRW7WgDeCCkv.jpg);
-  background-size: 180px 110px;
+  background-size: 240px 180px;
 }
 
 .mode:hover {
@@ -151,17 +151,18 @@ label {
 
 .mode {
   background-color: rgba(255, 255, 255, 0.9);
-  margin: 15px 0 0 0;
+  margin: 25px 0 0 0;
+  height: 120px;
   padding: -5px 0 30px 0;
 }
 
 p {
-  font-size: 15px;
+  font-size: 18px;
   margin: 3px auto;
 }
 
 h5 {
-  font-size: 25px;
+  font-size: 30px;
   margin: 5px 0 5px 0;
 }
 
@@ -170,21 +171,25 @@ h5 {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: rgba(250, 250, 250, 0.8);
+
 }
 
 .input1,
 .input2 {
   margin: 30px 30px;
-  background-color: rgba(250, 250, 250, 0.8);
+
+}
+
+#player1name, #player2name {
+    font-size: 20px;
 }
 
 h4 {
-  background-color: rgba(250, 250, 250, 0.8);
-  font-size: 20px;
+  background-color: rgba(250, 250, 250, 1);
+  font-size: 30px;
   height: 40px;
   width: 100%;
-  margin: auto;
+  margin: 20px;
   text-align: center;
 }
 
@@ -224,14 +229,14 @@ h4 {
 .topContainer {
   text-align: center;
   background-color: rgb(177, 220, 255);
-  height: 130px;
+  height: 150px;
   width: 100%;
   padding-top: 10px;
 }
 
 #startScreen h2 {
   font-family: "Single Day", cursive;
-  font-size: 35px;
+  font-size: 45px;
   margin-top: -1px;
 }
 
@@ -281,10 +286,10 @@ h4 {
 
 .reset h5 {
   border-radius: 5px;
-  height: 35px;
-  width: 85px;
+  height: 45px;
+  width: 130px;
   border: 1px solid black;
-  background: white;
+  background: rgb(255, 255, 255);
   padding: 8px 0 0 0;
 }
 

@@ -344,7 +344,7 @@ const gameSetUp = () => {
   $(".N:contains('FREE')")
     .addClass("hit")
     .attr("id", "N3")
-    .css("font-size", "16px");
+    .css("font-size", "24px");
 
   const reset = () => {
     location.reload();
