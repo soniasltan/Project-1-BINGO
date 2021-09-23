@@ -76,7 +76,7 @@ h1.currentNumber {
   background-color: rgba(255, 230, 0, 1);
   margin: auto;
   color: red;
-  font-size: 27px;
+  font-size: 40px;
 }
 
 .winAlert {
@@ -224,6 +224,8 @@ h4 {
 
 .topDisplay h2 {
   color: red;
+  font-size: 45px;
+  margin: 10px 0px 0px 0px;
 }
 
 .topContainer {
