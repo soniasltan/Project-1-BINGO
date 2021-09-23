@@ -18,20 +18,25 @@ const callNumbersClassic = () => {
   const currentNumber = $h1.text();
   $(".player1 ." + currentNumber).addClass("hit");
   $(".player2 ." + currentNumber).addClass("hit"); //if a td on the bingo card matches the current number being called, adds "hit" class to the td and marks it with a pink circle
-
+  const player1 = ".player1";
+  const player2 = ".player2";
   const player1name = $(".player1 caption").text();
   const player2name = $(".player2 caption").text();
 
-  if (checkWin(".player1") === true && checkWin(".player2") === true) {
+  if (checkWin(player1) === true && checkWin(player2) === true) {
     console.log("good tie");
+    showWin(player1);
+    showWin(player2);
     declareWin();
     $("#winDisplay").text("It's a tie!");
-  } else if (checkWin(".player1") === true && checkWin(".player2") === false) {
+  } else if (checkWin(player1) === true && checkWin(player2) === false) {
     console.log("good player 1 win");
+    showWin(player1);
     declareWin();
     $("#winDisplay").text(player1name + " wins!");
-  } else if (checkWin(".player2") === true && checkWin(".player1") === false) {
+  } else if (checkWin(player2) === true && checkWin(player1) === false) {
     console.log("good player 2 win");
+    showWin(player2);
     declareWin();
     $("#winDisplay").text(player2name + " wins!");
   } else {
@@ -207,13 +212,11 @@ const availBingoNums = [];
 /////////////////////////////////
 // to evaluate win
 
-const showWin = (winCon) => {
+const showWin = (player) => {
   console.log("winner winner chicken dinner");
-  square1.removeClass("hit").addClass("win");
-  square2.removeClass("hit").addClass("win");
-  square3.removeClass("hit").addClass("win");
-  square4.removeClass("hit").addClass("win");
-  square5.removeClass("hit").addClass("win");
+  for (let i=0; i<winningCombi[player].row.length; i++) {
+      $(player + " " + winningCombi[player].row[i]+" "+winningCombi[player].col[i]).removeClass("hit").addClass("win");
+  }
 };
 
 const declareWin = () => {
@@ -222,49 +225,90 @@ const declareWin = () => {
   const $winDisplay = $("<h2>").attr("id", "winDisplay");
   $topDisplay.append($winDisplay);
 };
+const colClass = [".B", ".I", ".N", ".G", ".O"];
+const rowClass = [".row1", ".row2", ".row3", ".row4", ".row5"];
+const winningCombi = {".player1":{row:[], col:[]}, ".player2":{row:[],col:[]}}
 
-const checkWin = (player) => {
-  const colClass = [".B", ".I", ".N", ".G", ".O"];
-  const rowClass = [".row1", ".row2", ".row3", ".row4", ".row5"];
-
-  const diagonalWinL = // complete diagonal line of 5 squares with class "hit" starting from top left corner
+const diagonalWinL = (player) => {
+  // complete diagonal line of 5 squares with class "hit" starting from top left corner
+  if (
     $(player + " " + rowClass[0] + " " + colClass[0]).hasClass("hit") &&
     $(player + " " + rowClass[1] + " " + colClass[1]).hasClass("hit") &&
     $(player + " " + rowClass[2] + " " + colClass[2]).hasClass("hit") &&
     $(player + " " + rowClass[3] + " " + colClass[3]).hasClass("hit") &&
-    $(player + " " + rowClass[4] + " " + colClass[4]).hasClass("hit");
-  const diagonalWinR = // complete diagonal line of 5 squares with class "hit" starting from top right corner
+    $(player + " " + rowClass[4] + " " + colClass[4]).hasClass("hit")
+  ) {
+    for (let i=0; i<rowClass.length; i++) {
+        winningCombi[player].row.push(rowClass[i])
+        winningCombi[player].col.push(colClass[i])
+        }
+    return true;
+  }
+};
+const diagonalWinR = (player) => {
+  // complete diagonal line of 5 squares with class "hit" starting from top right corner
+  if (
     $(player + " " + rowClass[0] + " " + colClass[4]).hasClass("hit") &&
     $(player + " " + rowClass[1] + " " + colClass[3]).hasClass("hit") &&
     $(player + " " + rowClass[2] + " " + colClass[2]).hasClass("hit") &&
     $(player + " " + rowClass[3] + " " + colClass[1]).hasClass("hit") &&
-    $(player + " " + rowClass[4] + " " + colClass[0]).hasClass("hit");
-
+    $(player + " " + rowClass[4] + " " + colClass[0]).hasClass("hit")
+  ) {
+    for (let i=0; i<rowClass.length; i++) {
+    winningCombi[player].row.push(rowClass[i])
+    winningCombi[player].col.push(colClass[4-i])
+    }
+    return true;
+  }
+};
+const verticalWin = (player) => {
+  // loops over each complete vertical line of 5 squares with class "hit", starting from column B
   for (let i = 0; i < colClass.length; i++) {
-    const verticalWin = // loops over each complete vertical line of 5 squares with class "hit", starting from column B
+    if (
       $(player + " " + rowClass[0] + " " + colClass[i]).hasClass("hit") &&
       $(player + " " + rowClass[1] + " " + colClass[i]).hasClass("hit") &&
       $(player + " " + rowClass[2] + " " + colClass[i]).hasClass("hit") &&
       $(player + " " + rowClass[3] + " " + colClass[i]).hasClass("hit") &&
-      $(player + " " + rowClass[4] + " " + colClass[i]).hasClass("hit");
-    const horizontalWin = // loops over each complete horizontal line of 5 squares with class "hit", starting from row 1
+      $(player + " " + rowClass[4] + " " + colClass[i]).hasClass("hit")
+    ) {
+        // for (let x=0; i<rowClass.length; x++) {
+        // winningCombi[player].row.push(rowClass[x])
+        // winningCombi[player].col.push(colClass[i])
+        // }
+      return true;
+    }
+  }
+};
+const horizontalWin = (player) => {
+  // loops over each complete horizontal line of 5 squares with class "hit", starting from row 1
+  for (let i = 0; i < colClass.length; i++) {
+    if (
       $(player + " " + rowClass[i] + " " + colClass[0]).hasClass("hit") &&
       $(player + " " + rowClass[i] + " " + colClass[1]).hasClass("hit") &&
       $(player + " " + rowClass[i] + " " + colClass[2]).hasClass("hit") &&
       $(player + " " + rowClass[i] + " " + colClass[3]).hasClass("hit") &&
-      $(player + " " + rowClass[i] + " " + colClass[4]).hasClass("hit");
-    if (verticalWin === true) {
-      console.log(player + " won in column " + colClass[i]);
-      return true;
-    } else if (horizontalWin === true) {
-      console.log(player + " won in " + rowClass[i]);
+      $(player + " " + rowClass[i] + " " + colClass[4]).hasClass("hit")
+    ) {
+        // for (let x=0; i<rowClass.length; x++) {
+        //     winningCombi[player].row.push(rowClass[i])
+        //     winningCombi[player].col.push(colClass[x])
+        //     }
       return true;
     }
   }
-  if (diagonalWinL === true) {
+};
+
+const checkWin = (player) => {
+  if (verticalWin(player) === true) {
+    console.log(player + " won vertically");
+    return true;
+  } else if (horizontalWin(player) === true) {
+    console.log(player + " won horizontally");
+    return true;
+  } else if (diagonalWinL(player) === true) {
     console.log(player + " won diagonally from the top left");
     return true;
-  } else if (diagonalWinR === true) {
+  } else if (diagonalWinR(player) === true) {
     console.log(player + " won diagonally from the top right");
     return true;
   } else {
