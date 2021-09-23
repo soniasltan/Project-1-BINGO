@@ -6,7 +6,6 @@ body {
 
 table {
   table-layout: fixed;
-  /* width: 40%; */
   border-collapse: collapse;
   border: 3px solid black;
   margin: 0 auto;
@@ -41,6 +40,7 @@ td {
 
 .cards {
   display: flex;
+  justify-content: center;
 }
 
 caption {
@@ -106,13 +106,14 @@ h1.currentNumber {
 
 label {
   font-weight: bold;
+  font-size: 18px;
 }
 
 .modeSelection {
   display: flex;
   width: 100%;
   padding-bottom: 80px;
-  justify-content: space-around;
+  justify-content: center;
   background-color: rgba(250, 250, 250, 0.8);
 }
 
@@ -120,12 +121,13 @@ label {
 #diamondMode,
 #edgesMode {
   border-radius: 5px;
-  height: 110px;
-  width: 180px;
+  height: 140px;
+  width: 200px;
   text-align: center;
   background-color: lightskyblue;
   display: flex;
   flex-direction: column;
+  margin: 0 35px;
 }
 
 #classicMode {
@@ -154,12 +156,12 @@ label {
 }
 
 p {
-  font-size: 13px;
+  font-size: 15px;
   margin: 3px auto;
 }
 
 h5 {
-  font-size: 20px;
+  font-size: 25px;
   margin: 5px 0 5px 0;
 }
 
@@ -167,18 +169,19 @@ h5 {
   margin: 50px 0 0 0;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   background-color: rgba(250, 250, 250, 0.8);
 }
 
 .input1,
 .input2 {
-  margin: 30px 0;
+  margin: 30px 30px;
   background-color: rgba(250, 250, 250, 0.8);
 }
 
 h4 {
   background-color: rgba(250, 250, 250, 0.8);
+  font-size: 20px;
   height: 40px;
   width: 100%;
   margin: auto;
@@ -192,16 +195,33 @@ h4 {
   align-items: center;
 }
 
+.topLogo {
+    display:flex;
+    justify-content: center;
+    background-color: rgb(177, 220, 255);
+    height: 90px;
+    width: 100%;
+    padding-top: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.topLogo h1 {
+  font-family: "Single Day", cursive;
+  font-size: 80px;
+  margin: 0px 5px 0px 5px;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  color: white;
+}
+
 .topDisplay h2 {
   color: red;
 }
 
-h1 {
-  font-size: 45px;
-  margin: -10px 0 15px 0;
-}
-
-.topLogo {
+.topContainer {
   text-align: center;
   background-color: rgb(177, 220, 255);
   height: 130px;
@@ -226,28 +246,28 @@ h1 {
   color: white;
 }
 
-#bingo {
+.bingo {
   display: flex;
   justify-content: center;
 }
 
-#B {
+.logoB {
   background-color: red;
 }
 
-#I {
+.logoI {
   background-color: rgb(19, 185, 83);
 }
 
-#N {
+.logoN {
   background-color: rgb(255, 208, 0);
 }
 
-#G {
+.logoG {
   background-color: rgb(10, 132, 233);
 }
 
-#O {
+.logoO {
   background-color: rgb(255, 158, 47);
 }
 
@@ -260,14 +280,14 @@ h1 {
 }
 
 .reset h5 {
-    border-radius: 5px;
-    height: 35px;
-    width: 85px;
-    border: 1px solid black;
-    background: white;
-    padding: 8px 0 0 0;
+  border-radius: 5px;
+  height: 35px;
+  width: 85px;
+  border: 1px solid black;
+  background: white;
+  padding: 8px 0 0 0;
 }
 
 .reset h5:hover {
-    background-color: rgba(255, 222, 32, 0.986);
+  background-color: rgba(255, 222, 32, 0.986);
 }
