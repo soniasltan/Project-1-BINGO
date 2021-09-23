@@ -345,6 +345,11 @@ const gameSetUp = () => {
     .addClass("hit")
     .attr("id", "N3")
     .css("font-size", "16px");
+
+  const reset = () => {
+    location.reload();
+  };
+  $(".reset").on("click", reset);
 };
 
 ////////////

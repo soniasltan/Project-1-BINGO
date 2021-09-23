@@ -1,5 +1,7 @@
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background: rgb(255, 251, 236);
+  background-size: cover;
 }
 
 table {
@@ -8,6 +10,7 @@ table {
   border-collapse: collapse;
   border: 3px solid black;
   margin: 0 auto;
+  background-color: white;
 }
 
 td {
@@ -54,8 +57,8 @@ h1.currentNumber {
 .numberCalled {
   border-radius: 50%;
   background-color: turquoise;
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -83,10 +86,11 @@ h1.currentNumber {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 125px;
-  width: 125px;
+  height: 165px;
+  width: 165px;
   color: red;
-  font-size: 40px;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 #gameScreen {
@@ -99,23 +103,17 @@ h1.currentNumber {
   justify-content: center;
   align-items: center;
 }
-.intro {
-  text-align: center;
-  margin: -2px 0;
-}
 
-h2.intro {
-  font-size: 30px;
-}
-
-h1.intro {
-  font-size: 50px;
+label {
+  font-weight: bold;
 }
 
 .modeSelection {
   display: flex;
-  width: 80%;
+  width: 100%;
+  padding-bottom: 80px;
   justify-content: space-around;
+  background-color: rgba(250, 250, 250, 0.8);
 }
 
 #classicMode,
@@ -130,31 +128,61 @@ h1.intro {
   flex-direction: column;
 }
 
-#classicMode:hover,
-#diamondMode:hover,
-#edgesMode:hover {
-  background-color: lightsalmon;
+#classicMode {
+  background: url(https://t3.ftcdn.net/jpg/03/52/47/60/360_F_352476025_vo8qnzZCfdqEJs33ga4KfuvbxeNt1gsm.jpg);
+  background-size: cover;
+}
+
+#diamondMode {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/PinkArgyle.svg/1200px-PinkArgyle.svg.png);
+  background-size: cover;
+}
+
+#edgesMode {
+  background: url(https://t4.ftcdn.net/jpg/03/21/48/73/360_F_321487379_sYChYvBCoLhrOmZLOXksLRW7WgDeCCkv.jpg);
+  background-size: 180px 110px;
+}
+
+.mode:hover {
+  background-color: rgba(255, 222, 32, 0.986);
+}
+
+.mode {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 15px 0 0 0;
+  padding: -5px 0 30px 0;
 }
 
 p {
   font-size: 13px;
-  margin: 0 auto;
+  margin: 3px auto;
 }
 
 h5 {
   font-size: 20px;
-  margin: 15px 0 5px 0;
+  margin: 5px 0 5px 0;
 }
 
 .nameSelection {
   margin: 50px 0 0 0;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  background-color: rgba(250, 250, 250, 0.8);
 }
 
 .input1,
 .input2 {
-  margin: 20px;
+  margin: 30px 0;
+  background-color: rgba(250, 250, 250, 0.8);
+}
+
+h4 {
+  background-color: rgba(250, 250, 250, 0.8);
+  height: 40px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
 }
 
 .topDisplay {
@@ -171,4 +199,75 @@ h5 {
 h1 {
   font-size: 45px;
   margin: -10px 0 15px 0;
+}
+
+.topLogo {
+  text-align: center;
+  background-color: rgb(177, 220, 255);
+  height: 130px;
+  width: 100%;
+  padding-top: 10px;
+}
+
+#startScreen h2 {
+  font-family: "Single Day", cursive;
+  font-size: 35px;
+  margin-top: -1px;
+}
+
+#startScreen h1 {
+  font-family: "Single Day", cursive;
+  font-size: 80px;
+  margin: -35px 5px 0px 5px;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  color: white;
+}
+
+#bingo {
+  display: flex;
+  justify-content: center;
+}
+
+#B {
+  background-color: red;
+}
+
+#I {
+  background-color: rgb(19, 185, 83);
+}
+
+#N {
+  background-color: rgb(255, 208, 0);
+}
+
+#G {
+  background-color: rgb(10, 132, 233);
+}
+
+#O {
+  background-color: rgb(255, 158, 47);
+}
+
+.reset {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset h5 {
+    border-radius: 5px;
+    height: 35px;
+    width: 85px;
+    border: 1px solid black;
+    background: white;
+    padding: 8px 0 0 0;
+}
+
+.reset h5:hover {
+    background-color: rgba(255, 222, 32, 0.986);
 }
