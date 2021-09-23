@@ -141,11 +141,11 @@ const startGame = () => {
   };
 
   const checkSingleWin = () => {
-    if (checkWin("player1") === true && checkWin("player2") === false) {
+    if (checkWinClassic("player1") === true && checkWinClassic("player2") === false) {
       console.log("good player 1 win");
       declareWin();
       $("#winDisplay").text(player1name + " wins!");
-    } else if (checkWin("player2") === true && checkWin("player1") === false) {
+    } else if (checkWinClassic("player2") === true && checkWinClassic("player1") === false) {
       console.log("good player 2 win");
       declareWin();
       $("#winDisplay").text(player2name + " wins!");
@@ -271,7 +271,7 @@ const startGame = () => {
     $("." + player + " .row4 .I").hasClass("hit") &&
     $("." + player + " .row5 .B").hasClass("hit");
   
-  const checkWin = (player) => {
+  const checkWinClassic = (player) => {
     console.log(player);
   
     if (

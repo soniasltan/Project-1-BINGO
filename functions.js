@@ -6,6 +6,24 @@ const startClassic = () => {
   $numberCalled.on("click", callNumbersClassic); // show new bingo number on click
 };
 
+const checkWinClassic = (player) => {
+  if (verticalWin(player) === true) {
+    console.log(player + " won vertically");
+    return true;
+  } else if (horizontalWin(player) === true) {
+    console.log(player + " won horizontally");
+    return true;
+  } else if (diagonalWinL(player) === true) {
+    console.log(player + " won diagonally from the top left");
+    return true;
+  } else if (diagonalWinR(player) === true) {
+    console.log(player + " won diagonally from the top right");
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const callNumbersClassic = () => {
   const $h1 = $(".currentNumber");
   for (let i = 0; i < 75; i++) {
@@ -18,24 +36,31 @@ const callNumbersClassic = () => {
   const currentNumber = $h1.text();
   $(".player1 ." + currentNumber).addClass("hit");
   $(".player2 ." + currentNumber).addClass("hit"); //if a td on the bingo card matches the current number being called, adds "hit" class to the td and marks it with a pink circle
+
   const player1 = ".player1";
   const player2 = ".player2";
   const player1name = $(".player1 caption").text();
   const player2name = $(".player2 caption").text();
 
-  if (checkWin(player1) === true && checkWin(player2) === false) {
+  if (checkWinClassic(player1) === true && checkWinClassic(player2) === false) {
     console.log("good player 1 win");
     showWin(player1);
     console.log("congrats player 1 only");
     declareWin();
     $("#winDisplay").text(player1name + " wins!");
-  } else if (checkWin(player2) === true && checkWin(player1) === false) {
+  } else if (
+    checkWinClassic(player2) === true &&
+    checkWinClassic(player1) === false
+  ) {
     console.log("good player 2 win");
     showWin(player2);
     console.log("congrats player 2 only");
     declareWin();
     $("#winDisplay").text(player2name + " wins!");
-  } else if (checkWin(player1) === true && checkWin(player2) === true) {
+  } else if (
+    checkWinClassic(player1) === true &&
+    checkWinClassic(player2) === true
+  ) {
     console.log("good tie");
     showWin(player1);
     console.log("congrats player 1 tie");
@@ -77,8 +102,23 @@ const callNumbersHard = () => {
 const startEdges = () => {
   gameSetUp();
   const $numberCalled = $(".numberCalled");
-  $numberCalled.on("click", callNumbers); // show new bingo number on click
+  $numberCalled.on("click", callNumbersEdges); // show new bingo number on click
 };
+
+const checkWinEdges = (player) => {
+  if (
+    topEdgeWin(player) === true &&
+    bottomEdgeWin(player) === true &&
+    leftEdgeWin(player) === true &&
+    rightEdgeWin(player) === true
+  ) {
+    console.log(player + " completed all edges!");
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const callNumbersEdges = () => {
   const $h1 = $(".currentNumber");
   for (let i = 0; i < 75; i++) {
@@ -92,8 +132,40 @@ const callNumbersEdges = () => {
   $(".player1 ." + currentNumber).addClass("hit");
   $(".player2 ." + currentNumber).addClass("hit"); //if a td on the bingo card matches the current number being called, adds "hit" class to the td and marks it with a pink circle
 
-  checkSingleWin();
-  checkTie();
+  const player1 = ".player1";
+  const player2 = ".player2";
+  const player1name = $(".player1 caption").text();
+  const player2name = $(".player2 caption").text();
+
+  if (checkWinEdges(player1) === true && checkWinEdges(player2) === false) {
+    console.log("good player 1 win");
+    showWin(player1);
+    console.log("congrats player 1 only");
+    declareWin();
+    $("#winDisplay").text(player1name + " wins!");
+  } else if (
+    checkWinEdges(player2) === true &&
+    checkWinEdges(player1) === false
+  ) {
+    console.log("good player 2 win");
+    showWin(player2);
+    console.log("congrats player 2 only");
+    declareWin();
+    $("#winDisplay").text(player2name + " wins!");
+  } else if (
+    checkWinEdges(player1) === true &&
+    checkWinEdges(player2) === true
+  ) {
+    console.log("good tie");
+    showWin(player1);
+    console.log("congrats player 1 tie");
+    showWin(player2);
+    console.log("congrats player 2 tie");
+    declareWin();
+    $("#winDisplay").text("It's a tie!");
+  } else {
+    console.log("no wins yet!");
+  }
 };
 ////////////
 const gameSetUp = () => {
@@ -223,20 +295,47 @@ const showWin = (player) => {
       winningCombi[player].row.push(rowClass[i]);
       winningCombi[player].col.push(colClass[i]);
     }
-  } else if (diagonalWinR(player) === true) {
+  }
+  if (diagonalWinR(player) === true) {
     for (let i = 0; i < rowClass.length; i++) {
       winningCombi[player].row.push(rowClass[i]);
       winningCombi[player].col.push(colClass[4 - i]);
     }
-  } else if (verticalWin(player) === true) {
+  }
+  if (verticalWin(player) === true) {
     for (let i = 0; i < rowClass.length; i++) {
       winningCombi[player].row.push(rowClass[i]);
       winningCombi[player].col.push(colClass[winningCol]);
     }
-  } else if (horizontalWin(player) === true) {
+  }
+  if (horizontalWin(player) === true) {
     for (let i = 0; i < rowClass.length; i++) {
       winningCombi[player].row.push(rowClass[winningRow]);
       winningCombi[player].col.push(colClass[i]);
+    }
+  }
+  if (topEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[0]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  }
+  if (bottomEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[4]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  }
+  if (leftEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[0]);
+    }
+  }
+  if (rightEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[4]);
     }
   }
 
@@ -268,6 +367,54 @@ let winningCol = null;
 const winningCombi = {
   ".player1": { row: [], col: [] },
   ".player2": { row: [], col: [] },
+};
+
+const topEdgeWin = (player) => {
+  if (
+    $(player + " " + rowClass[0] + " " + colClass[0]).hasClass("hit") &&
+    $(player + " " + rowClass[0] + " " + colClass[1]).hasClass("hit") &&
+    $(player + " " + rowClass[0] + " " + colClass[2]).hasClass("hit") &&
+    $(player + " " + rowClass[0] + " " + colClass[3]).hasClass("hit") &&
+    $(player + " " + rowClass[0] + " " + colClass[4]).hasClass("hit")
+  ) {
+    return true;
+  }
+};
+
+const bottomEdgeWin = (player) => {
+  if (
+    $(player + " " + rowClass[4] + " " + colClass[0]).hasClass("hit") &&
+    $(player + " " + rowClass[4] + " " + colClass[1]).hasClass("hit") &&
+    $(player + " " + rowClass[4] + " " + colClass[2]).hasClass("hit") &&
+    $(player + " " + rowClass[4] + " " + colClass[3]).hasClass("hit") &&
+    $(player + " " + rowClass[4] + " " + colClass[4]).hasClass("hit")
+  ) {
+    return true;
+  }
+};
+
+const leftEdgeWin = (player) => {
+  if (
+    $(player + " " + rowClass[0] + " " + colClass[0]).hasClass("hit") &&
+    $(player + " " + rowClass[1] + " " + colClass[0]).hasClass("hit") &&
+    $(player + " " + rowClass[2] + " " + colClass[0]).hasClass("hit") &&
+    $(player + " " + rowClass[3] + " " + colClass[0]).hasClass("hit") &&
+    $(player + " " + rowClass[4] + " " + colClass[0]).hasClass("hit")
+  ) {
+    return true;
+  }
+};
+
+const rightEdgeWin = (player) => {
+  if (
+    $(player + " " + rowClass[0] + " " + colClass[4]).hasClass("hit") &&
+    $(player + " " + rowClass[1] + " " + colClass[4]).hasClass("hit") &&
+    $(player + " " + rowClass[2] + " " + colClass[4]).hasClass("hit") &&
+    $(player + " " + rowClass[3] + " " + colClass[4]).hasClass("hit") &&
+    $(player + " " + rowClass[4] + " " + colClass[4]).hasClass("hit")
+  ) {
+    return true;
+  }
 };
 
 const diagonalWinL = (player) => {
@@ -323,24 +470,6 @@ const horizontalWin = (player) => {
       winningRow = i;
       return true;
     }
-  }
-};
-
-const checkWin = (player) => {
-  if (verticalWin(player) === true) {
-    console.log(player + " won vertically");
-    return true;
-  } else if (horizontalWin(player) === true) {
-    console.log(player + " won horizontally");
-    return true;
-  } else if (diagonalWinL(player) === true) {
-    console.log(player + " won diagonally from the top left");
-    return true;
-  } else if (diagonalWinR(player) === true) {
-    console.log(player + " won diagonally from the top right");
-    return true;
-  } else {
-    return false;
   }
 };
 
