@@ -24,11 +24,45 @@ const checkWinClassic = (player) => {
   }
 };
 
+const showWinClassic = (player) => {
+  console.log("winner winner chicken dinner");
+  if (diagonalWinL(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  } else if (diagonalWinR(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[4 - i]);
+    }
+  } else if (verticalWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[winningCol]);
+    }
+  } else if (horizontalWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[winningRow]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  }
+
+  for (let i = 0; i < winningCombi[player].row.length; i++) {
+    $(
+      player +
+        " " +
+        winningCombi[player].row[i] +
+        " " +
+        winningCombi[player].col[i]
+    )
+      .removeClass("hit")
+      .addClass("win");
+  }
+};
+
 const callNumbersClassic = () => {
   const $h1 = $(".currentNumber");
-  for (let i = 0; i < 75; i++) {
-    availBingoNums.push(i + 1);
-  }
   const bingoIndex = Math.floor(Math.random() * availBingoNums.length);
   $h1.text(availBingoNums[bingoIndex]);
   availBingoNums.splice(bingoIndex, 1);
@@ -44,7 +78,7 @@ const callNumbersClassic = () => {
 
   if (checkWinClassic(player1) === true && checkWinClassic(player2) === false) {
     console.log("good player 1 win");
-    showWin(player1);
+    showWinClassic(player1);
     console.log("congrats player 1 only");
     declareWin();
     $("#winDisplay").text(player1name + " wins!");
@@ -53,7 +87,7 @@ const callNumbersClassic = () => {
     checkWinClassic(player1) === false
   ) {
     console.log("good player 2 win");
-    showWin(player2);
+    showWinClassic(player2);
     console.log("congrats player 2 only");
     declareWin();
     $("#winDisplay").text(player2name + " wins!");
@@ -62,9 +96,9 @@ const callNumbersClassic = () => {
     checkWinClassic(player2) === true
   ) {
     console.log("good tie");
-    showWin(player1);
+    showWinClassic(player1);
     console.log("congrats player 1 tie");
-    showWin(player2);
+    showWinClassic(player2);
     console.log("congrats player 2 tie");
     declareWin();
     $("#winDisplay").text("It's a tie!");
@@ -74,17 +108,61 @@ const callNumbersClassic = () => {
 };
 /////////////////
 
-// to show Hard game screen
-const startHard = () => {
+// to show Diamond game screen
+const startDiamond = () => {
   gameSetUp();
   const $numberCalled = $(".numberCalled");
-  $numberCalled.on("click", callNumbersHard); // show new bingo number on click
+  $numberCalled.on("click", callNumbersDiamond); // show new bingo number on click
 };
-const callNumbersHard = () => {
-  const $h1 = $(".currentNumber");
-  for (let i = 0; i < 75; i++) {
-    availBingoNums.push(i + 1);
+
+const checkWinDiamond = (player) => {
+  if (diamondWin(player) === true) {
+    return true;
+  } else {
+    return false;
   }
+};
+
+const showWinDiamond = (player) => {
+  console.log("winner winner chicken dinner");
+  if (diamondWin(player) === true) {
+    winningCombi[player].row.push(
+      rowClass[0],
+      rowClass[1],
+      rowClass[1],
+      rowClass[2],
+      rowClass[2],
+      rowClass[3],
+      rowClass[3],
+      rowClass[4]
+    );
+    winningCombi[player].col.push(
+      colClass[2],
+      colClass[1],
+      colClass[3],
+      colClass[0],
+      colClass[4],
+      colClass[1],
+      colClass[3],
+      colClass[2]
+    );
+  }
+
+  for (let i = 0; i < winningCombi[player].row.length; i++) {
+    $(
+      player +
+        " " +
+        winningCombi[player].row[i] +
+        " " +
+        winningCombi[player].col[i]
+    )
+      .removeClass("hit")
+      .addClass("win");
+  }
+};
+
+const callNumbersDiamond = () => {
+  const $h1 = $(".currentNumber");
   const bingoIndex = Math.floor(Math.random() * availBingoNums.length);
   $h1.text(availBingoNums[bingoIndex]);
   availBingoNums.splice(bingoIndex, 1);
@@ -93,8 +171,40 @@ const callNumbersHard = () => {
   $(".player1 ." + currentNumber).addClass("hit");
   $(".player2 ." + currentNumber).addClass("hit"); //if a td on the bingo card matches the current number being called, adds "hit" class to the td and marks it with a pink circle
 
-  checkSingleWin();
-  checkTie();
+  const player1 = ".player1";
+  const player2 = ".player2";
+  const player1name = $(".player1 caption").text();
+  const player2name = $(".player2 caption").text();
+
+  if (checkWinDiamond(player1) === true && checkWinDiamond(player2) === false) {
+    console.log("good player 1 win");
+    showWinDiamond(player1);
+    console.log("congrats player 1 only");
+    declareWin();
+    $("#winDisplay").text(player1name + " wins!");
+  } else if (
+    checkWinDiamond(player2) === true &&
+    checkWinDiamond(player1) === false
+  ) {
+    console.log("good player 2 win");
+    showWinDiamond(player2);
+    console.log("congrats player 2 only");
+    declareWin();
+    $("#winDisplay").text(player2name + " wins!");
+  } else if (
+    checkWinDiamond(player1) === true &&
+    checkWinDiamond(player2) === true
+  ) {
+    console.log("good tie");
+    showWinDiamond(player1);
+    console.log("congrats player 1 tie");
+    showWinDiamond(player2);
+    console.log("congrats player 2 tie");
+    declareWin();
+    $("#winDisplay").text("It's a tie!");
+  } else {
+    console.log("no wins yet!");
+  }
 };
 ////////////
 
@@ -119,11 +229,48 @@ const checkWinEdges = (player) => {
   }
 };
 
+const showWinEdges = (player) => {
+  console.log("winner winner chicken dinner");
+  if (topEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[0]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  }
+  if (bottomEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[4]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  }
+  if (leftEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[0]);
+    }
+  }
+  if (rightEdgeWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[4]);
+    }
+  }
+
+  for (let i = 0; i < winningCombi[player].row.length; i++) {
+    $(
+      player +
+        " " +
+        winningCombi[player].row[i] +
+        " " +
+        winningCombi[player].col[i]
+    )
+      .removeClass("hit")
+      .addClass("win");
+  }
+};
+
 const callNumbersEdges = () => {
   const $h1 = $(".currentNumber");
-  for (let i = 0; i < 75; i++) {
-    availBingoNums.push(i + 1);
-  }
   const bingoIndex = Math.floor(Math.random() * availBingoNums.length);
   $h1.text(availBingoNums[bingoIndex]);
   availBingoNums.splice(bingoIndex, 1);
@@ -139,7 +286,7 @@ const callNumbersEdges = () => {
 
   if (checkWinEdges(player1) === true && checkWinEdges(player2) === false) {
     console.log("good player 1 win");
-    showWin(player1);
+    showWinEdges(player1);
     console.log("congrats player 1 only");
     declareWin();
     $("#winDisplay").text(player1name + " wins!");
@@ -148,7 +295,7 @@ const callNumbersEdges = () => {
     checkWinEdges(player1) === false
   ) {
     console.log("good player 2 win");
-    showWin(player2);
+    showWinEdges(player2);
     console.log("congrats player 2 only");
     declareWin();
     $("#winDisplay").text(player2name + " wins!");
@@ -157,9 +304,9 @@ const callNumbersEdges = () => {
     checkWinEdges(player2) === true
   ) {
     console.log("good tie");
-    showWin(player1);
+    showWinEdges(player1);
     console.log("congrats player 1 tie");
-    showWin(player2);
+    showWinEdges(player2);
     console.log("congrats player 2 tie");
     declareWin();
     $("#winDisplay").text("It's a tie!");
@@ -183,6 +330,11 @@ const gameSetUp = () => {
   } else {
     $(".player2 caption").text(player2input.val());
   }
+
+  for (let i = 0; i < 75; i++) {
+    availBingoNums.push(i + 1);
+  }
+
   const $player1card = $(".player1");
   const $player2card = $(".player2");
   chooseRandomNums($player1card); // creates ramdom numbers for bingo card
@@ -288,70 +440,6 @@ const availBingoNums = [];
 /////////////////////////////////
 // to evaluate win
 
-const showWin = (player) => {
-  console.log("winner winner chicken dinner");
-  if (diagonalWinL(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[i]);
-      winningCombi[player].col.push(colClass[i]);
-    }
-  }
-  if (diagonalWinR(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[i]);
-      winningCombi[player].col.push(colClass[4 - i]);
-    }
-  }
-  if (verticalWin(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[i]);
-      winningCombi[player].col.push(colClass[winningCol]);
-    }
-  }
-  if (horizontalWin(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[winningRow]);
-      winningCombi[player].col.push(colClass[i]);
-    }
-  }
-  if (topEdgeWin(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[0]);
-      winningCombi[player].col.push(colClass[i]);
-    }
-  }
-  if (bottomEdgeWin(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[4]);
-      winningCombi[player].col.push(colClass[i]);
-    }
-  }
-  if (leftEdgeWin(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[i]);
-      winningCombi[player].col.push(colClass[0]);
-    }
-  }
-  if (rightEdgeWin(player) === true) {
-    for (let i = 0; i < rowClass.length; i++) {
-      winningCombi[player].row.push(rowClass[i]);
-      winningCombi[player].col.push(colClass[4]);
-    }
-  }
-
-  for (let i = 0; i < winningCombi[player].row.length; i++) {
-    $(
-      player +
-        " " +
-        winningCombi[player].row[i] +
-        " " +
-        winningCombi[player].col[i]
-    )
-      .removeClass("hit")
-      .addClass("win");
-  }
-};
-
 const declareWin = () => {
   $(".numberCalled").text("BINGO!").addClass("winAlert");
   const $topDisplay = $(".topDisplay");
@@ -367,6 +455,21 @@ let winningCol = null;
 const winningCombi = {
   ".player1": { row: [], col: [] },
   ".player2": { row: [], col: [] },
+};
+
+const diamondWin = (player) => {
+  if (
+    $(player + " " + rowClass[0] + " " + colClass[2]).hasClass("hit") &&
+    $(player + " " + rowClass[1] + " " + colClass[1]).hasClass("hit") &&
+    $(player + " " + rowClass[1] + " " + colClass[3]).hasClass("hit") &&
+    $(player + " " + rowClass[2] + " " + colClass[0]).hasClass("hit") &&
+    $(player + " " + rowClass[2] + " " + colClass[4]).hasClass("hit") &&
+    $(player + " " + rowClass[3] + " " + colClass[1]).hasClass("hit") &&
+    $(player + " " + rowClass[3] + " " + colClass[3]).hasClass("hit") &&
+    $(player + " " + rowClass[4] + " " + colClass[2]).hasClass("hit")
+  ) {
+    return true;
+  }
 };
 
 const topEdgeWin = (player) => {
@@ -477,10 +580,10 @@ const horizontalWin = (player) => {
 
 const main = () => {
   const $classicMode = $("#classicMode");
-  const $hardMode = $("#hardMode");
+  const $diamondMode = $("#diamondMode");
   const $edgesMode = $("#edgesMode");
   $classicMode.on("click", startClassic);
-  $hardMode.on("click", startHard);
+  $diamondMode.on("click", startDiamond);
   $edgesMode.on("click", startEdges);
 };
 

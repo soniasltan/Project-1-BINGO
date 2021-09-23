@@ -698,7 +698,7 @@ const startGame = () => {
   
   const main = () => {
     const $classicMode = $("#classicMode");
-    const $hardMode = $("#hardMode");
+    const $diamondMode = $("#diamondMode");
     const $edgesMode = $("#edgesMode");
     $classicMode.on("click", startGame);
     $hardMode.on("click", startGame);
