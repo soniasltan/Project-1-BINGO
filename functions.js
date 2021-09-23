@@ -23,22 +23,26 @@ const callNumbersClassic = () => {
   const player1name = $(".player1 caption").text();
   const player2name = $(".player2 caption").text();
 
-  if (checkWin(player1) === true && checkWin(player2) === true) {
-    console.log("good tie");
-    showWin(player1);
-    showWin(player2);
-    declareWin();
-    $("#winDisplay").text("It's a tie!");
-  } else if (checkWin(player1) === true && checkWin(player2) === false) {
+  if (checkWin(player1) === true && checkWin(player2) === false) {
     console.log("good player 1 win");
     showWin(player1);
+    console.log("congrats player 1 only");
     declareWin();
     $("#winDisplay").text(player1name + " wins!");
   } else if (checkWin(player2) === true && checkWin(player1) === false) {
     console.log("good player 2 win");
     showWin(player2);
+    console.log("congrats player 2 only");
     declareWin();
     $("#winDisplay").text(player2name + " wins!");
+  } else if (checkWin(player1) === true && checkWin(player2) === true) {
+    console.log("good tie");
+    showWin(player1);
+    console.log("congrats player 1 tie");
+    showWin(player2);
+    console.log("congrats player 2 tie");
+    declareWin();
+    $("#winDisplay").text("It's a tie!");
   } else {
     console.log("no wins yet!");
   }
@@ -214,8 +218,38 @@ const availBingoNums = [];
 
 const showWin = (player) => {
   console.log("winner winner chicken dinner");
-  for (let i=0; i<winningCombi[player].row.length; i++) {
-      $(player + " " + winningCombi[player].row[i]+" "+winningCombi[player].col[i]).removeClass("hit").addClass("win");
+  if (diagonalWinL(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  } else if (diagonalWinR(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[4 - i]);
+    }
+  } else if (verticalWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[i]);
+      winningCombi[player].col.push(colClass[winningCol]);
+    }
+  } else if (horizontalWin(player) === true) {
+    for (let i = 0; i < rowClass.length; i++) {
+      winningCombi[player].row.push(rowClass[winningRow]);
+      winningCombi[player].col.push(colClass[i]);
+    }
+  }
+
+  for (let i = 0; i < winningCombi[player].row.length; i++) {
+    $(
+      player +
+        " " +
+        winningCombi[player].row[i] +
+        " " +
+        winningCombi[player].col[i]
+    )
+      .removeClass("hit")
+      .addClass("win");
   }
 };
 
@@ -225,9 +259,16 @@ const declareWin = () => {
   const $winDisplay = $("<h2>").attr("id", "winDisplay");
   $topDisplay.append($winDisplay);
 };
+
 const colClass = [".B", ".I", ".N", ".G", ".O"];
 const rowClass = [".row1", ".row2", ".row3", ".row4", ".row5"];
-const winningCombi = {".player1":{row:[], col:[]}, ".player2":{row:[],col:[]}}
+let winningRow = null;
+let winningCol = null;
+
+const winningCombi = {
+  ".player1": { row: [], col: [] },
+  ".player2": { row: [], col: [] },
+};
 
 const diagonalWinL = (player) => {
   // complete diagonal line of 5 squares with class "hit" starting from top left corner
@@ -238,10 +279,6 @@ const diagonalWinL = (player) => {
     $(player + " " + rowClass[3] + " " + colClass[3]).hasClass("hit") &&
     $(player + " " + rowClass[4] + " " + colClass[4]).hasClass("hit")
   ) {
-    for (let i=0; i<rowClass.length; i++) {
-        winningCombi[player].row.push(rowClass[i])
-        winningCombi[player].col.push(colClass[i])
-        }
     return true;
   }
 };
@@ -254,16 +291,13 @@ const diagonalWinR = (player) => {
     $(player + " " + rowClass[3] + " " + colClass[1]).hasClass("hit") &&
     $(player + " " + rowClass[4] + " " + colClass[0]).hasClass("hit")
   ) {
-    for (let i=0; i<rowClass.length; i++) {
-    winningCombi[player].row.push(rowClass[i])
-    winningCombi[player].col.push(colClass[4-i])
-    }
     return true;
   }
 };
+
 const verticalWin = (player) => {
   // loops over each complete vertical line of 5 squares with class "hit", starting from column B
-  for (let i = 0; i < colClass.length; i++) {
+  for (let i = 0; i < rowClass.length; i++) {
     if (
       $(player + " " + rowClass[0] + " " + colClass[i]).hasClass("hit") &&
       $(player + " " + rowClass[1] + " " + colClass[i]).hasClass("hit") &&
@@ -271,10 +305,7 @@ const verticalWin = (player) => {
       $(player + " " + rowClass[3] + " " + colClass[i]).hasClass("hit") &&
       $(player + " " + rowClass[4] + " " + colClass[i]).hasClass("hit")
     ) {
-        // for (let x=0; i<rowClass.length; x++) {
-        // winningCombi[player].row.push(rowClass[x])
-        // winningCombi[player].col.push(colClass[i])
-        // }
+      winningCol = i;
       return true;
     }
   }
@@ -289,10 +320,7 @@ const horizontalWin = (player) => {
       $(player + " " + rowClass[i] + " " + colClass[3]).hasClass("hit") &&
       $(player + " " + rowClass[i] + " " + colClass[4]).hasClass("hit")
     ) {
-        // for (let x=0; i<rowClass.length; x++) {
-        //     winningCombi[player].row.push(rowClass[i])
-        //     winningCombi[player].col.push(colClass[x])
-        //     }
+      winningRow = i;
       return true;
     }
   }
