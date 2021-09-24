@@ -103,6 +103,7 @@ const gameSetUp = () => {
   // switches screens from initial player set up to the actual game play
   $("#startScreen").toggle();
   $("#gameScreen").toggle();
+  $("#music").show();
   // feed in selected player names (if any)
   const player1input = $("#player1name");
   const player2input = $("#player2name");
@@ -136,23 +137,35 @@ const gameSetUp = () => {
     .attr("id", "N3")
     .css("font-size", "24px");
 
-    // triggers full page reset on click of reset button
-    const reset = () => {
-      location.reload();
-    };
-    $(".reset").on("click", reset);
+  // triggers full page reset on click of reset button
+  const reset = () => {
+    location.reload();
+  };
+  $(".reset").on("click", reset);
 };
+
+// toggles music on and off on icon click
+const playMusic = () => {
+    const $audio = $("audio")[0];
+    if ($audio.paused === false) {
+        $audio.pause();
+    } else {
+        $audio.play();
+    };
+}
 
 // core conditions to start game, with different resulting game modes based on button click from initial selection screen
 const main = () => {
-    const $classicMode = $("#classicMode");
-    const $diamondMode = $("#diamondMode");
-    const $edgesMode = $("#edgesMode");
-    $classicMode.on("click", startClassic);
-    $diamondMode.on("click", startDiamond);
-    $edgesMode.on("click", startEdges);
-  };
-  
+  const $classicMode = $("#classicMode");
+  const $diamondMode = $("#diamondMode");
+  const $edgesMode = $("#edgesMode");
+  const $music = $("#music");
+  $classicMode.on("click", startClassic);
+  $diamondMode.on("click", startDiamond);
+  $edgesMode.on("click", startEdges);
+  $music.on("click", playMusic);
+};
+
 /////////////////////////////////////////////////////////////
 // WIN CONDITIONS AND RESULTING EFFECTS
 /////////////////////////////////////////////////////////////
