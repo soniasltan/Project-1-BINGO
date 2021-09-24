@@ -138,21 +138,25 @@ const gameSetUp = () => {
     .css("font-size", "24px");
 
   // triggers full page reset on click of reset button
-  const reset = () => {
-    location.reload();
-  };
-  $(".reset").on("click", reset);
+};
+
+// resets to show initial page and resets each player Bingo card
+const reset = () => {
+  $("#startScreen").toggle();
+  $("#gameScreen").toggle();
+  $(".player1 tbody").empty();
+  $(".player2 tbody").empty();
 };
 
 // toggles music on and off on icon click
 const playMusic = () => {
-    const $audio = $("audio")[0];
-    if ($audio.paused === false) {
-        $audio.pause();
-    } else {
-        $audio.play();
-    };
-}
+  const $audio = $("audio")[0];
+  if ($audio.paused === false) {
+    $audio.pause();
+  } else {
+    $audio.play();
+  }
+};
 
 // core conditions to start game, with different resulting game modes based on button click from initial selection screen
 const main = () => {
@@ -164,6 +168,7 @@ const main = () => {
   $diamondMode.on("click", startDiamond);
   $edgesMode.on("click", startEdges);
   $music.on("click", playMusic);
+  $(".reset").on("click", reset);
 };
 
 /////////////////////////////////////////////////////////////
